@@ -776,6 +776,72 @@ body.light-mode .lm-logo{color:rgba(14,26,14,0.88)!important}
 .rule{height:1px;background:var(--line2);margin:0 60px}
 .rule.dark{background:rgba(255,255,255,0.06);margin:0}
 
+/* BENCHMARK CHART VERTICAL */
+.bench-chart-wrap{
+  display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:end;
+  margin-top:32px;
+}
+.bchart{position:relative;height:240px;padding-bottom:32px}
+.bchart-bars{
+  display:flex;align-items:flex-end;gap:8px;
+  height:100%;position:relative;z-index:1;
+}
+.bchart-bar-group{
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;flex:1;height:100%;justify-content:flex-end;
+}
+.bchart-bar{
+  width:100%;border-radius:4px 4px 0 0;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding-top:6px;transition:opacity .2s;min-height:8px;
+}
+.bchart-bar:hover{opacity:.85}
+.bchart-val{
+  font-size:10px;font-family:'Jost',sans-serif;
+  color:rgba(255,255,255,0.8);font-weight:500;
+  white-space:nowrap;letter-spacing:.3px;
+}
+.bchart-label{
+  font-size:10px;color:rgba(255,255,255,0.35);
+  text-align:center;line-height:1.4;letter-spacing:.3px;
+  white-space:nowrap;
+}
+.bchart-grid{position:absolute;inset:0;pointer-events:none}
+.bchart-grid-line{
+  position:absolute;left:0;right:0;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.bchart-grid-line span{
+  font-size:9px;color:rgba(255,255,255,0.2);
+  position:absolute;left:-28px;top:-7px;
+}
+.bench-highlights{
+  display:flex;flex-direction:column;gap:12px;
+  padding-left:16px;border-left:1px solid rgba(255,255,255,0.06);
+}
+.bh-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  border-radius:var(--r-md);padding:16px 18px;
+}
+.bh-eyebrow{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.bh-val{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--white);font-weight:300;line-height:1.2;margin-bottom:6px}
+.bh-val span{font-size:16px;color:rgba(255,255,255,0.4)}
+.bh-note{font-size:11px;color:rgba(255,255,255,0.3);line-height:1.5}
+.bh-disclaimer{font-size:10px;color:rgba(255,255,255,0.18);line-height:1.6;padding:10px 0;border-top:1px solid rgba(255,255,255,0.05)}
+body.light-mode .bchart-val{color:rgba(14,26,14,0.7)!important}
+body.light-mode .bchart-label{color:rgba(14,26,14,0.35)!important}
+body.light-mode .bh-card{background:rgba(14,26,14,0.03)!important;border-color:rgba(14,26,14,0.08)!important}
+body.light-mode .bh-val{color:rgba(14,26,14,0.88)!important}
+body.light-mode .bh-note,.bh-disclaimer{color:rgba(14,26,14,0.35)!important}
+body.light-mode .bench-highlights{border-color:rgba(14,26,14,0.08)!important}
+@media(max-width:767px){
+  .bench-chart-wrap{grid-template-columns:1fr;gap:24px}
+  .bench-highlights{padding-left:0;border-left:none;border-top:1px solid rgba(255,255,255,0.06);padding-top:16px}
+  .bchart{height:180px}
+  .bchart-val{font-size:9px}
+  .bchart-label{font-size:9px}
+}
+
 /* DOCUMENTOS — DRAWER VISUALIZADOR */
 .doc-group-label{
   font-size:10px;letter-spacing:3px;text-transform:uppercase;
@@ -1242,11 +1308,42 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
 .hh-note{font-size:12px;color:var(--text3);margin-top:8px;line-height:1.5}
 
 .hub-info-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;
+  margin-bottom:24px;
 }
-.hi-block{padding:16px 0;border-bottom:1px solid var(--line2)}
-.hi-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
-.hi-val{font-size:13px;color:var(--text);font-weight:300;line-height:1.5}
+.hi-card{
+  background:var(--surf2);border:1px solid var(--line2);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+.hi-card-header{
+  padding:12px 18px;border-bottom:1px solid var(--line2);
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+}
+.hi-row{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 18px;border-bottom:1px solid var(--line);
+  transition:background .15s;
+}
+.hi-row:last-child{border-bottom:none}
+.hi-row:hover{background:var(--surf3)}
+.hi-ico{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--gold-faint);border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:13px;
+}
+.hi-key{
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);width:140px;flex-shrink:0;
+}
+.hi-val{font-size:13px;color:var(--text);flex:1;line-height:1.4}
+
+/* light mode */
+body.light-mode .hi-card{background:var(--surf2)!important;border-color:rgba(14,26,14,0.10)!important}
+body.light-mode .hi-card-header{border-color:rgba(14,26,14,0.08)!important}
+body.light-mode .hi-row{border-color:rgba(14,26,14,0.05)!important}
+body.light-mode .hi-row:hover{background:var(--surf3)!important}
+body.light-mode .hi-key{color:rgba(14,26,14,0.38)!important}
+body.light-mode .hi-val{color:rgba(14,26,14,0.85)!important}
 
 .hub-aquifer{
   background:var(--surf1);border-left:2px solid var(--gold);
@@ -1267,7 +1364,6 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
   .hub-tab{font-size:11px;padding:8px 14px}
   .hub-content{padding:0 16px 40px}
   .hub-metrics-grid{grid-template-columns:1fr 1fr}
-  .hub-info-grid{grid-template-columns:1fr}
   .hub-highlight{flex-direction:column;gap:16px}
   .hh-val{font-size:36px}
 }
@@ -1323,11 +1419,21 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
 }
 .scp-valor-wrap{
   display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;background:var(--ink);border-radius:var(--r-sm);
-  margin-bottom:12px;
+  padding:14px 18px;
+  background:var(--surf1);
+  border:1px solid var(--gold-border);
+  border-radius:var(--r-md);
+  margin-bottom:14px;
 }
-.scp-valor-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
-.scp-valor{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:300}
+.scp-valor-lbl{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text3);
+}
+.scp-valor{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;color:var(--gold);font-weight:300;
+  letter-spacing:-0.5px;
+}
 .scp-chips{display:flex;gap:6px;flex-wrap:wrap}
 .scp-chip{
   font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
@@ -1386,6 +1492,65 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
 .sbf-gray{background:rgba(255,255,255,0.2)}
 .sbf-gray2{background:rgba(255,255,255,0.12)}
 .sim-bm-val{font-size:11px;color:var(--text2);text-align:right}
+
+/* ===================== TIMELINE FASES (Céu Azul) ===================== */
+.fase-list{display:flex;flex-direction:column;gap:12px}
+
+.fase-item{
+  background:var(--surf2);border:1px solid var(--line2);
+  border-radius:var(--r-lg);overflow:hidden;
+  transition:border-color .2s;
+}
+.fase-item:hover{border-color:var(--gold-border)}
+.fase-item.done{border-left:3px solid #3d9e6a}
+.fase-item.active{border-left:3px solid var(--gold)}
+.fase-item.pending{border-left:3px solid var(--line2)}
+
+.fase-header{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;cursor:pointer;
+}
+.fase-num-ball{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;position:relative;
+}
+.fase-num-ball.done{background:rgba(61,158,106,0.15);border:1.5px solid #3d9e6a;color:#3d9e6a}
+.fase-num-ball.active{background:rgba(184,147,58,0.12);border:1.5px solid var(--gold);color:var(--gold)}
+.fase-num-ball.pending{background:var(--surf3);border:1.5px solid var(--line2);color:var(--text3)}
+
+.fase-header-content{flex:1;min-width:0}
+.fase-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.fase-titulo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--text);line-height:1.2;margin-bottom:3px;transition:color .2s}
+.fase-header:hover .fase-titulo{color:var(--gold)}
+.fase-resumo{font-size:12px;color:var(--text3);line-height:1.4}
+.fase-chevron{color:var(--text3);transition:transform .3s ease;flex-shrink:0}
+.fase-chevron.open{transform:rotate(180deg);color:var(--gold)}
+
+.fase-detail{
+  border-top:1px solid var(--line2);
+  padding:16px 20px 20px;
+  animation:hubPanelIn .25s ease;
+}
+.fase-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fase-li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:var(--text2);line-height:1.6;
+  padding:10px 14px;
+  background:var(--surf3);border-radius:var(--r-sm);
+}
+.fase-li::before{display:none}
+
+/* light mode */
+body.light-mode .fase-item{background:var(--surf2)!important;border-color:rgba(14,26,14,0.10)!important}
+body.light-mode .fase-item.done{border-left-color:#3d9e6a!important}
+body.light-mode .fase-item.active{border-left-color:var(--gold)!important}
+body.light-mode .fase-item.pending{border-left-color:rgba(14,26,14,0.10)!important}
+body.light-mode .fase-num-ball.pending{background:var(--surf3)!important;border-color:rgba(14,26,14,0.15)!important;color:rgba(14,26,14,0.40)!important}
+body.light-mode .fase-detail{border-color:rgba(14,26,14,0.07)!important}
+body.light-mode .fase-titulo{color:rgba(14,26,14,0.88)!important}
+body.light-mode .fase-li{background:var(--surf1)!important;color:rgba(14,26,14,0.60)!important}
 
 /* ===================== TIMELINE ===================== */
 .tl-block{padding:0 60px 56px}
@@ -2085,15 +2250,15 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
 /* MACOS ÍCONES (continuação) */
 /* ===================== PROJETOS — ÍCONES MACOS ===================== */.faz-icons-row{
-  display:flex;justify-content:center;gap:64px;
-  padding:48px 60px 40px;
+  display:flex;justify-content:center;gap:80px;
+  padding:64px 60px 56px;
 }
 .faz-icon{
-  display:flex;flex-direction:column;align-items:center;gap:12px;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
   cursor:pointer;
 }
 .faz-icon-shell{
-  width:120px;height:120px;border-radius:28px;
+  width:160px;height:160px;border-radius:36px;
   display:flex;align-items:center;justify-content:center;
   position:relative;
   transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s ease;
@@ -2119,22 +2284,22 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 .faz-icon-img img{width:80px;height:80px;object-fit:contain;border-radius:12px}
 .faz-initials{
   font-family:'Cormorant Garamond',serif;
-  font-size:40px;font-weight:300;color:var(--gold);
+  font-size:56px;font-weight:300;color:var(--gold);
   letter-spacing:-1px;line-height:1;user-select:none;
 }
 
 .faz-icon-badge{
-  position:absolute;top:-7px;right:-7px;
-  width:24px;height:24px;border-radius:50%;
-  border:2.5px solid var(--cream);
+  position:absolute;top:-8px;right:-8px;
+  width:30px;height:30px;border-radius:50%;
+  border:3px solid var(--cream);
   display:flex;align-items:center;justify-content:center;
 }
-.faz-icon-badge svg{width:11px;height:11px}
+.faz-icon-badge svg{width:13px;height:13px}
 .fib-op{background:#2d7a4f}
 .fib-gf{background:var(--gold)}
 
-.faz-icon-label{font-size:13px;color:var(--white);font-weight:400;text-align:center;letter-spacing:.2px}
-.faz-icon-sub{font-size:11px;color:var(--text3);text-align:center;margin-top:-4px}
+.faz-icon-label{font-size:15px;color:var(--white);font-weight:400;text-align:center;letter-spacing:.2px}
+.faz-icon-sub{font-size:12px;color:var(--text3);text-align:center;margin-top:-4px}
 
 /* DETALHE */
 .faz-detail{
@@ -2528,7 +2693,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <p class="lhc-sub">Um modelo estruturado de investimento em fazendas com garantia real, segurança jurídica e rentabilidade acima do mercado tradicional.</p>
       <div class="lhc-btns">
         <button class="lhc-btn-primary" onclick="scrollToCTA()">Quero investir</button>
-        <button class="lhc-btn-secondary" onclick="abrirLogin()">Já sou cotista</button>
+        <button class="lhc-btn-secondary" onclick="abrirLogin()">Já sou acionista</button>
       </div>
       <div class="lhc-stats">
         <div class="lhc-stat">
@@ -2606,7 +2771,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="lp-status lps-gf"><div class="dot"></div>Greenfield irrigado</div>
         </div>
       </div>
-      <div class="land-teaser">Para ver dados completos, TIR e cenários de retorno, <button onclick="abrirLogin()">faça login como cotista</button></div>
+      <div class="land-teaser">Para ver dados completos, TIR e cenários de retorno, <button onclick="abrirLogin()">faça login como acionista</button></div>
     </div>
   </section>
 
@@ -2637,7 +2802,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <span class="lb-val">4,9%</span>
         </div>
       </div>
-      <div class="land-teaser">Valores exatos de TIR e cenários disponíveis para cotistas. <button onclick="scrollToCTA()">Solicite uma apresentação</button></div>
+      <div class="land-teaser">Valores exatos de TIR e cenários disponíveis para acionistas. <button onclick="scrollToCTA()">Solicite uma apresentação</button></div>
     </div>
   </section>
 
@@ -2648,22 +2813,22 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <h2 class="ls-title">Seu investimento formalizado em quatro camadas de proteção.</h2>
       <div class="land-gov-grid">
         <div class="lg-item">
-          <div class="lg-num">01</div>
+          <div class="lg-num">1</div>
           <div class="lg-name">Contrato de adesão</div>
           <div class="lg-desc">Documento oficial que formaliza o investimento e estabelece direitos e deveres do investidor na estrutura da S/A.</div>
         </div>
         <div class="lg-item">
-          <div class="lg-num">02</div>
+          <div class="lg-num">2</div>
           <div class="lg-name">Participação societária</div>
           <div class="lg-desc">Investidor ingressa como acionista por Assembleia Geral Ordinária, com direito à participação nos lucros.</div>
         </div>
         <div class="lg-item">
-          <div class="lg-num">03</div>
+          <div class="lg-num">3</div>
           <div class="lg-name">Registro na Junta Comercial</div>
           <div class="lg-desc">Toda documentação é registrada e publicada no Diário Oficial do Estado — transparência e legalidade integrais.</div>
         </div>
         <div class="lg-item">
-          <div class="lg-num">04</div>
+          <div class="lg-num">4</div>
           <div class="lg-name">Garantia real: fazenda</div>
           <div class="lg-desc">A propriedade agrícola é o ativo da S/A — o investidor detém participação sobre um bem real, registrado e tangível.</div>
         </div>
@@ -2690,7 +2855,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         </a>
         <div class="lc-card" onclick="abrirLogin()" style="cursor:pointer">
           <div class="lc-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></div>
-          <div class="lc-card-label">Já sou cotista</div>
+          <div class="lc-card-label">Já sou acionista</div>
           <div class="lc-card-val">Acessar o portal</div>
         </div>
       </div>
@@ -2704,8 +2869,8 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
   <div class="login-modal" onclick="event.stopPropagation()">
     <button class="lm-close" onclick="fecharLogin()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     <div class="lm-logo">Fazenda <span>S/A</span></div>
-    <div class="lm-title">Portal do Cotista</div>
-    <div class="lm-sub">Acesso exclusivo para cotistas credenciados</div>
+    <div class="lm-title">Portal do Acionista</div>
+    <div class="lm-sub">Acesso exclusivo para acionistas credenciados</div>
     <div class="lf">
       <label>E-mail ou usuário</label>
       <input type="text" id="le" placeholder="seu@email.com.br">
@@ -2722,7 +2887,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
   </div>
 </div>
 
-<!-- ==================== APP (portal do cotista) ==================== -->
+<!-- ==================== APP (portal do acionista) ==================== -->
 <div id="app" style="display:none">
 
   <!-- NAV -->
@@ -2790,7 +2955,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="hero-left">
           <div>
             <div class="hero-greeting">Bem-vindo de volta</div>
-            <div class="hero-name" id="hero-name">João<br>Cotista</div>
+            <div class="hero-name" id="hero-name">João<br>Acionista</div>
             <div class="hero-sub">Fazenda S/A · Investidor ativo</div>
           </div>
 
@@ -2808,25 +2973,25 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           </div>
 
           <div class="hero-position">
-            <div class="hp-label">Seu patrimônio projetado</div>
+            <div class="hp-label">Estimativa de retorno do seu aporte</div>
             <div class="hp-number">R$ <span>137</span><span style="font-size:40px">.773</span></div>
-            <div class="hp-invested">Você investiu R$ 50.000 em Janeiro de 2026</div>
-            <div class="hp-date">Projeção mínima · cenário conservador · 3 anos</div>
+            <div class="hp-invested">Baseado em aporte de R$ 50.000 · Saída estimada em 3 a 5 anos</div>
+            <div class="hp-date">Estimativa ilustrativa · sujeita a riscos e variações · não constitui garantia de retorno</div>
           </div>
         </div>
         <div class="hero-right">
           <div class="hr-top">
             <div class="stat-row">
-              <div class="sr-label">TIR Projetada · Anual</div>
+              <div class="sr-label">TIR Estimada · Anual</div>
               <div class="sr-value gold">40,19%</div>
               <div class="sr-compare">
-                vs. CDI <span class="vs">14,50% · 277% de superação</span>
+                vs. CDI <span class="vs">14,50% · referência histórica</span>
               </div>
             </div>
             <div class="stat-row">
-              <div class="sr-label">Ganho mínimo por cota</div>
+              <div class="sr-label">Retorno estimado por ação</div>
               <div class="sr-value">R$ 87.773</div>
-              <div class="sr-note">Cenário conservador · saída em 3 anos</div>
+              <div class="sr-note">Estimativa ilustrativa · saída em 3 a 5 anos · sujeita a variações</div>
             </div>
             <div class="stat-row">
               <div class="sr-label">Projetos no portfólio</div>
@@ -2836,21 +3001,21 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
             <div class="stat-row">
               <div class="sr-label">Valorização das terras · 2024</div>
               <div class="sr-value gold">+28,4%</div>
-              <div class="sr-note">Alta média por hectare no Brasil · vs. 2022</div>
+              <div class="sr-note">Alta média por hectare no Brasil · vs. 2022 · fonte: FNP/Informa</div>
             </div>
           </div>
           <div class="hr-bottom">
             <div class="next-event">
-              <div class="ne-label">Próximo evento</div>
+              <div class="ne-label">Próximo evento previsto</div>
               <div class="ne-title">Implantação dos 11 pivôs — Fazenda Céu Azul</div>
-              <div class="ne-date">Previsto: 2026 · Piauí</div>
+              <div class="ne-date">Previsão: 2026 · Piauí · sujeito a condições operacionais</div>
             </div>
           </div>
         </div>
       </div>
       <div class="hero-scroll">
         <div class="hs-line"></div>
-        <div class="hs-text">Role para ver detalhes</div>
+        <div class="hs-text">Estimativas ilustrativas · rentabilidade não garantida · sujeita a riscos de mercado, climáticos e regulatórios · não constitui oferta pública de valores mobiliários</div>
       </div>
     </div>
 
@@ -2860,25 +3025,25 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="ps-item">
         <div class="ps-label">Valor Investido</div>
         <div class="ps-value">R$ 50.000</div>
-        <div class="ps-note">Cota mínima · Jan 2026</div>
+        <div class="ps-note">Ação mínima · Jan 2026</div>
       </div>
       <div class="ps-divider"></div>
       <div class="ps-item">
-        <div class="ps-label">Retorno Mínimo Projetado</div>
+        <div class="ps-label">Retorno Estimado · Cenário Cauteloso</div>
         <div class="ps-value gold">R$ 87.773</div>
-        <div class="ps-note">+175% em 3 anos</div>
+        <div class="ps-note">Estimativa ilustrativa · +175% · saída em 3 a 5 anos</div>
       </div>
       <div class="ps-divider"></div>
       <div class="ps-item">
-        <div class="ps-label">Retorno Máximo Projetado</div>
+        <div class="ps-label">Retorno Estimado · Cenário Otimista</div>
         <div class="ps-value up">R$ 275.464</div>
-        <div class="ps-note">+551% em 7 anos · otimista</div>
+        <div class="ps-note">Estimativa ilustrativa · +551% · saída em 7 anos · sem garantia</div>
       </div>
       <div class="ps-divider"></div>
       <div class="ps-item">
-        <div class="ps-label">Próxima Distribuição</div>
-        <div class="ps-value">1º Ano Safra</div>
-        <div class="ps-note">DY projetado 1,1% a.a.</div>
+        <div class="ps-label">Distribuição Estimada</div>
+        <div class="ps-value">4ª Safra</div>
+        <div class="ps-note">DY estimado 3,88% a.a. · sujeito a produção e mercado</div>
       </div>
     </div>
 
@@ -2907,74 +3072,100 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       </div>
     </div>
 
-    <div class="rule anim"></div>
-
-    <!-- NARRATIVA Céu Azul -->
-    <div class="narrative reverse anim">
-      <div class="narr-text">
-        <div class="narr-chapter">Projeto II · Greenfield irrigado</div>
-        <div class="narr-headline">Céu Azul — comprada R$ 14mi abaixo do mercado</div>
-        <div class="narr-body">4.001 hectares no Piauí, sobre o Aquífero Cabeças Gurguéia — a 3ª maior reserva de água subterrânea do Brasil. Licença ambiental emitida em 2026. Com 11 pivôs centrais e 2.820 ha de área de plantio, a projeção conservadora de 5 anos chega a R$ 400 milhões.</div>
-        <div class="narr-fact">
-          <div class="nf-item"><div class="nf-val">4.001 ha</div><div class="nf-label">Área total · PI</div></div>
-          <div class="nf-item"><div class="nf-val">R$ 400mi</div><div class="nf-label">Projeção 5 anos</div></div>
-          <div class="nf-item"><div class="nf-val">30,05%</div><div class="nf-label">TIR a.a. · 5 anos</div></div>
-        </div>
-      </div>
-      <div class="narr-visual">
-        <div class="nv-card">
-          <div class="nv-card-title">Oportunidade de Compra</div>
-          <div class="data-row"><span class="dr-key">Ganho imediato (24 meses)</span><span class="dr-val gold">R$ 140.080.000</span></div>
-          <div class="data-row"><span class="dr-key">Projeção 5a · conservador</span><span class="dr-val">R$ 400.000.000</span></div>
-          <div class="data-row"><span class="dr-key">Projeção 5a · otimista</span><span class="dr-val gold">R$ 600.000.000</span></div>
-          <div class="data-row"><span class="dr-key">Aquífero</span><span class="dr-val">Cabeças Gurguéia</span></div>
-          <div class="data-row"><span class="dr-key">Licença ambiental</span><span class="dr-val"><span class="dr-badge">2026 · Emitida</span></span></div>
-        </div>
-      </div>
-    </div>
 
     <!-- BENCHMARKS -->
     <div class="bench-section anim">
       <div class="bench-header">
         <div class="bench-title">Desempenho vs. Mercado</div>
-        <div class="bench-sub">TIR anualizada comparada aos principais benchmarks financeiros</div>
+        <div class="bench-sub">TIR estimada anualizada comparada aos principais benchmarks. Estimativas ilustrativas, sujeitas a variações de mercado e não constituem garantia de retorno.</div>
       </div>
-      <div class="bench-bars">
-        <div class="bb-item">
-          <div class="bb-name highlight">Céu Azul · 3a cons.</div>
-          <div class="bb-track"><div class="bb-fill" style="width:100%;background:var(--gold)"></div></div>
-          <div class="bb-val highlight">40,19%</div>
+
+      <!-- GRÁFICO DE BARRAS VERTICAIS -->
+      <div class="bench-chart-wrap">
+        <div class="bchart">
+          <!-- Barras -->
+          <div class="bchart-bars">
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:62%;background:rgba(184,147,58,0.5)">
+                <div class="bchart-val">40,19%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>3a cons.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:100%;background:var(--gold)">
+                <div class="bchart-val" style="color:var(--ink)">64,67%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>3a otim.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:46%;background:rgba(184,147,58,0.35)">
+                <div class="bchart-val">30,05%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>5a cons.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:65%;background:rgba(184,147,58,0.45)">
+                <div class="bchart-val">42,02%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>5a otim.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:36%;background:rgba(184,147,58,0.25)">
+                <div class="bchart-val">23,11%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>7a cons.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:47%;background:rgba(184,147,58,0.35)">
+                <div class="bchart-val">30,68%</div>
+              </div>
+              <div class="bchart-label">Céu Azul<br>7a otim.</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:22%;background:rgba(255,255,255,0.18)">
+                <div class="bchart-val">14,50%</div>
+              </div>
+              <div class="bchart-label">CDI</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:19%;background:rgba(255,255,255,0.12)">
+                <div class="bchart-val">12,67%</div>
+              </div>
+              <div class="bchart-label">Terra<br>10a</div>
+            </div>
+            <div class="bchart-bar-group">
+              <div class="bchart-bar" style="height:7%;background:rgba(255,255,255,0.08)">
+                <div class="bchart-val">4,89%</div>
+              </div>
+              <div class="bchart-label">IPCA</div>
+            </div>
+          </div>
+          <!-- Linhas de referência -->
+          <div class="bchart-grid">
+            <div class="bchart-grid-line" style="bottom:100%"><span>60%</span></div>
+            <div class="bchart-grid-line" style="bottom:66%"><span>40%</span></div>
+            <div class="bchart-grid-line" style="bottom:33%"><span>20%</span></div>
+            <div class="bchart-grid-line" style="bottom:0%"><span>0%</span></div>
+          </div>
         </div>
-        <div class="bb-item">
-          <div class="bb-name highlight">Céu Azul · 3a otim.</div>
-          <div class="bb-track"><div class="bb-fill" style="width:100%;background:var(--gold2)"></div></div>
-          <div class="bb-val highlight">64,67%</div>
+      </div>
+
+      <!-- DESTAQUES LADO DIREITO -->
+      <div class="bench-highlights">
+        <div class="bh-card">
+          <div class="bh-eyebrow">Alta Performance</div>
+          <div class="bh-val">277% a 446%<br><span>do CDI</span></div>
+          <div class="bh-note">nos cenários estimados de saída em 3 anos</div>
         </div>
-        <div class="bb-item">
-          <div class="bb-name highlight">Águia Dourada · 3a</div>
-          <div class="bb-track"><div class="bb-fill" style="width:62%;background:#5dba7e"></div></div>
-          <div class="bb-val highlight">40,69%</div>
+        <div class="bh-card">
+          <div class="bh-val" style="font-size:32px">159% do CDI</div>
+          <div class="bh-note">mesmo no cenário estimado mais conservador · 7 anos</div>
         </div>
-        <div class="bb-item">
-          <div class="bb-name">Céu Azul · 5a cons.</div>
-          <div class="bb-track"><div class="bb-fill" style="width:47%;background:rgba(184,147,58,0.5)"></div></div>
-          <div class="bb-val">30,05%</div>
+        <div class="bh-card">
+          <div class="bh-val" style="font-size:20px">IPCA + 18 p.p.<br>a IPCA + 60 p.p.</div>
+          <div class="bh-note">faixa de equivalência estimada contra a inflação</div>
         </div>
-        <div class="bb-item">
-          <div class="bb-name">CDI</div>
-          <div class="bb-track"><div class="bb-fill" style="width:22%;background:rgba(255,255,255,0.15)"></div></div>
-          <div class="bb-val">14,50%</div>
-        </div>
-        <div class="bb-item">
-          <div class="bb-name">Valorização Terra · 10a</div>
-          <div class="bb-track"><div class="bb-fill" style="width:19%;background:rgba(255,255,255,0.1)"></div></div>
-          <div class="bb-val">12,67%</div>
-        </div>
-        <div class="bb-item">
-          <div class="bb-name">IPCA</div>
-          <div class="bb-track"><div class="bb-fill" style="width:7%;background:rgba(255,255,255,0.07)"></div></div>
-          <div class="bb-val">4,89%</div>
-        </div>
+        <div class="bh-disclaimer">Benchmarks: CDI 14,50% a.a. · IPCA 4,89% a.a. · valorização histórica da terra 12,67% a.a. · Estimativas ilustrativas, não constituem garantia de retorno.</div>
       </div>
     </div>
 
@@ -3020,23 +3211,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         </div>
       </div>
 
-      <!-- VALIDAÇÃO MERCADO -->
-      <div class="faz-mercado anim">
-        <div class="fmr-eyebrow">Validação de Mercado · 2025</div>
-        <div class="fmr-grid">
-          <div class="fmr-item">
-            <div class="fmr-val">R$ 1,8 bilhão</div>
-            <div class="fmr-deal">Bom Futuro × Proterra · 40.000 ha · 2025</div>
-            <div class="fmr-note">O mercado de M&A agrícola segue aquecido. O ciclo de consolidação favorece ativos bem preparados.</div>
-          </div>
-          <div class="fmr-divider"></div>
-          <div class="fmr-item">
-            <div class="fmr-val">R$ 913 milhões</div>
-            <div class="fmr-deal">SLC Agrícola × Agrícola Xingu · 47.822 ha · 2025</div>
-            <div class="fmr-note">Potenciais adquirentes: SLC · BrasilAgro · Bom Futuro · Amaggi · Radar · Pátria</div>
-          </div>
-        </div>
-      </div>
+      <!-- VALIDAÇÃO MERCADO REMOVIDA -->
     </div>
 
     <!-- ESTADO 2: DETALHE DA FAZENDA COM SUB-ABAS -->
@@ -3189,8 +3364,8 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="nc-icon nci-market"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
         <div class="nc-body">
           <div class="nc-tags"><span class="nc-faz-tag nft-geral">Geral</span><span class="nc-type-tag">Marketplace</span></div>
-          <div class="nc-title">Marketplace de cotas disponível</div>
-          <div class="nc-desc">A funcionalidade de marketplace de cotas foi ativada no portal. Você já pode anunciar suas cotas para venda ou demonstrar interesse em adquirir cotas de outros cotistas.</div>
+          <div class="nc-title">Marketplace de ações disponível</div>
+          <div class="nc-desc">A funcionalidade de marketplace de ações foi ativada no portal. Você já pode anunciar suas ações para venda ou demonstrar interesse em adquirir ações de outros acionistas.</div>
           <div class="nc-meta">
             <span class="nc-date">Mai 2026</span>
             <button class="nc-action" onclick="showSection('marketplace',null)">Acessar →</button>
@@ -3218,8 +3393,8 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
   <div class="section" id="sec-marketplace">
 
     <div class="sec-header anim">
-      <div class="sec-eyebrow">Mercado Secundário · Cotas</div>
-      <div class="sec-title">Marketplace<br>de cotas.</div>
+      <div class="sec-eyebrow">Mercado Secundário · Ações</div>
+      <div class="sec-title">Marketplace<br>de ações.</div>
       <div class="sec-subtitle">Compre ou venda participações nas fazendas do portfólio. Todos os anúncios são verificados pela administração.</div>
     </div>
 
@@ -3232,7 +3407,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       </div>
       <button class="mk-anunciar-btn" onclick="abrirFormAnuncio()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Anunciar minha cota
+        Anunciar minha ação
       </button>
     </div>
 
@@ -3248,14 +3423,14 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="mk-badge mbg-venda">Venda</div>
         </div>
         <div class="mk-card-body">
-          <div class="mk-cotas-num">2 <span>cotas</span></div>
+          <div class="mk-cotas-num">2 <span>ações</span></div>
           <div class="mk-preco-lbl">Valor solicitado</div>
           <div class="mk-preco">R$ 100.000</div>
-          <div class="mk-preco-unit">R$ 50.000 / cota</div>
+          <div class="mk-preco-unit">R$ 50.000 / ação</div>
           <div class="mk-divider"></div>
           <div class="mk-info-row">
             <span class="mk-info-lbl">Vendedor</span>
-            <span class="mk-info-val">Cotista verificado</span>
+            <span class="mk-info-val">Acionista verificado</span>
           </div>
           <div class="mk-info-row">
             <span class="mk-info-lbl">Publicado</span>
@@ -3282,14 +3457,14 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="mk-badge mbg-venda">Venda</div>
         </div>
         <div class="mk-card-body">
-          <div class="mk-cotas-num">1 <span>cota</span></div>
+          <div class="mk-cotas-num">1 <span>ação</span></div>
           <div class="mk-preco-lbl">Valor solicitado</div>
           <div class="mk-preco">R$ 55.000</div>
-          <div class="mk-preco-unit">R$ 55.000 / cota</div>
+          <div class="mk-preco-unit">R$ 55.000 / ação</div>
           <div class="mk-divider"></div>
           <div class="mk-info-row">
             <span class="mk-info-lbl">Vendedor</span>
-            <span class="mk-info-val">Cotista verificado</span>
+            <span class="mk-info-val">Acionista verificado</span>
           </div>
           <div class="mk-info-row">
             <span class="mk-info-lbl">Publicado</span>
@@ -3330,7 +3505,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="mk-modal-header">
         <div>
           <div class="mk-modal-eyebrow">Marketplace · Nova oferta</div>
-          <div class="mk-modal-title">Anunciar minha cota</div>
+          <div class="mk-modal-title">Anunciar minha ação</div>
         </div>
         <button class="mk-modal-close" onclick="fecharFormAnuncio()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -3350,7 +3525,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
         <div class="mk-row">
           <div class="mk-field">
-            <label class="mk-label">Quantidade de cotas</label>
+            <label class="mk-label">Quantidade de ações</label>
             <input class="mk-input" type="number" id="anuncio-qtd" min="1" placeholder="Ex: 2">
           </div>
           <div class="mk-field">
@@ -3405,7 +3580,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="mk-interesse-info" id="interesse-info"></div>
         <div class="mk-field">
           <label class="mk-label">Sua mensagem para o vendedor</label>
-          <textarea class="mk-textarea" id="interesse-msg" rows="3" placeholder="Ex: Tenho interesse nas cotas. Podemos conversar sobre condições de pagamento?"></textarea>
+          <textarea class="mk-textarea" id="interesse-msg" rows="3" placeholder="Ex: Tenho interesse nas ações. Podemos conversar sobre condições de pagamento?"></textarea>
         </div>
         <div class="mk-field">
           <label class="mk-label">Seu contato</label>
@@ -3484,14 +3659,14 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <div class="sec-header anim">
       <div class="sec-eyebrow">Painel Administrativo</div>
       <div class="sec-title">Gestão do<br>portal.</div>
-      <div class="sec-subtitle">Gerencie cotistas, acompanhe acessos e atualize informações do site.</div>
+      <div class="sec-subtitle">Gerencie acionistas, acompanhe acessos e atualize informações do site.</div>
     </div>
 
     <!-- TABS DO ADMIN -->
     <div class="admin-tabs anim">
       <button class="admin-tab active" onclick="adminTab('usuarios',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Cotistas
+        Acionistas
       </button>
       <button class="admin-tab" onclick="adminTab('documentos-admin',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -3514,11 +3689,11 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="admin-toolbar">
         <div class="admin-search-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input class="admin-search" type="text" id="admin-search" placeholder="Buscar cotista..." oninput="filtrarCotistas()">
+          <input class="admin-search" type="text" id="admin-search" placeholder="Buscar acionista..." oninput="filtrarCotistas()">
         </div>
         <button class="admin-btn-new" onclick="abrirModalCotista()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Novo cotista
+          Novo acionista
         </button>
       </div>
 
@@ -3527,7 +3702,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <table class="admin-table" id="admin-table">
           <thead>
             <tr>
-              <th>Cotista</th>
+              <th>Acionista</th>
               <th>Email / Login</th>
               <th>Fazendas</th>
               <th>Papel</th>
@@ -3536,7 +3711,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
             </tr>
           </thead>
           <tbody id="admin-tbody">
-            <tr><td colspan="6" class="admin-loading">Carregando cotistas...</td></tr>
+            <tr><td colspan="6" class="admin-loading">Carregando acionistas...</td></tr>
           </tbody>
         </table>
       </div>
@@ -3609,22 +3784,22 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="ast-card">
           <div class="ast-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
           <div class="ast-val" id="stat-total">—</div>
-          <div class="ast-lbl">Total de cotistas</div>
+          <div class="ast-lbl">Total de acionistas</div>
         </div>
         <div class="ast-card">
           <div class="ast-ico" style="color:var(--up)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
           <div class="ast-val" id="stat-ativos">—</div>
-          <div class="ast-lbl">Cotistas ativos</div>
+          <div class="ast-lbl">Acionistas ativos</div>
         </div>
         <div class="ast-card">
           <div class="ast-ico" style="color:#3d9e6a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
           <div class="ast-val" id="stat-aguia">—</div>
-          <div class="ast-lbl">Cotistas Águia Dourada</div>
+          <div class="ast-lbl">Acionistas Águia Dourada</div>
         </div>
         <div class="ast-card">
           <div class="ast-ico" style="color:#5ba3e0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
           <div class="ast-val" id="stat-ceu">—</div>
-          <div class="ast-lbl">Cotistas Céu Azul</div>
+          <div class="ast-lbl">Acionistas Céu Azul</div>
         </div>
         <div class="ast-card">
           <div class="ast-ico" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
@@ -3647,7 +3822,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="mk-modal-header">
         <div>
           <div class="mk-modal-eyebrow">Painel Admin</div>
-          <div class="mk-modal-title" id="modal-cotista-titulo">Novo cotista</div>
+          <div class="mk-modal-title" id="modal-cotista-titulo">Novo acionista</div>
         </div>
         <button class="mk-modal-close" onclick="fecharModalCotista()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -3676,7 +3851,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="mk-field">
           <label class="mk-label">Papel</label>
           <select class="mk-select" id="mc-role">
-            <option value="cotista">Cotista</option>
+            <option value="cotista">Acionista</option>
             <option value="admin">Administrador</option>
           </select>
         </div>
@@ -3709,7 +3884,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <label class="mc-toggle-row">
             <div>
               <div style="font-size:13px;color:var(--text)">Conta ativa</div>
-              <div style="font-size:11px;color:var(--text3)">Cotista inativo não consegue fazer login</div>
+              <div style="font-size:11px;color:var(--text3)">Acionista inativo não consegue fazer login</div>
             </div>
             <div class="mc-toggle" id="mc-ativo-toggle" onclick="toggleAtivo()">
               <div class="mc-toggle-knob"></div>
@@ -3725,7 +3900,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <button class="mk-btn-cancel" onclick="fecharModalCotista()">Cancelar</button>
         <button class="mk-btn-submit" id="mc-submit-btn" onclick="salvarCotista()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
-          Salvar cotista
+          Salvar acionista
         </button>
       </div>
     </div>
@@ -3736,21 +3911,21 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <div class="perfil-hero anim">
       <div class="ph-avatar" id="ph-avatar">JC</div>
       <div class="ph-info">
-        <div class="ph-label">Cotista · Fazenda S/A</div>
-        <div class="ph-name" id="ph-name">João Cotista</div>
+        <div class="ph-label">Acionista · Fazenda S/A</div>
+        <div class="ph-name" id="ph-name">João Acionista</div>
         <div class="ph-since">Membro desde Janeiro de 2026 · Investidor Ativo</div>
       </div>
       <div class="ph-right">
-        <div class="ph-cota-label">Sua cota</div>
+        <div class="ph-cota-label">Sua ação</div>
         <div class="ph-cota-val">R$ 50.000</div>
-        <div class="ph-cota-note">Cota mínima · 1 ação ordinária nominativa</div>
+        <div class="ph-cota-note">Ação mínima · 1 ação ordinária nominativa</div>
       </div>
     </div>
 
     <div class="perfil-body anim">
       <div>
         <div class="pf-section-title">Dados pessoais</div>
-        <div class="pf-field"><label class="pf-label">Nome completo</label><input class="pf-input" id="pf-nome" type="text" value="João da Silva Cotista"></div>
+        <div class="pf-field"><label class="pf-label">Nome completo</label><input class="pf-input" id="pf-nome" type="text" value="João da Silva Acionista"></div>
         <div class="pf-field"><label class="pf-label">E-mail</label><input class="pf-input" id="pf-email" type="email" value="joao@email.com.br"></div>
         <div class="pf-field"><label class="pf-label">CPF</label><input class="pf-input" type="text" value="•••.•••.•••-••" readonly></div>
         <div class="pf-field"><label class="pf-label">Telefone</label><input class="pf-input" type="text" value="+55 (54) 99999-0000"></div>
@@ -3791,46 +3966,46 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<script>
-// ─── USUÁRIOS ────────────────────────────────────────────────────────────────
-// fazendas: [] = nenhuma | ['aguia'] | ['ceu'] | ['aguia','ceu'] | 'admin'
-// ─── CONFIGURAÇÃO DA API ──────────────────────────────────────────────────────
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3001'
-  : 'https://fazenda-sa-api.railway.app';
+<!-- SUPABASE SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-// ─── USUÁRIOS LOCAIS (modo demonstração — sem backend) ────────────────────────
-// Remova este bloco quando o backend estiver no ar
-const USERS_LOCAL = {
-  'admin':             { pass:'admin',       nome:'Administrador',    first:'Admin',   initials:'AD', role:'admin',   fazendas:'admin' },
-  'luciano@lcrp.com.br':{ pass:'fazenda2026', nome:'Luciano LCRP',    first:'Luciano', initials:'LL', role:'cotista', fazendas:['aguia','ceu'] },
-  'joao@email.com.br': { pass:'123456',      nome:'João Cotista',    first:'João',    initials:'JC', role:'cotista', fazendas:['aguia'] },
-  'aguia':             { pass:'123456',      nome:'Cotista Águia',   first:'Cotista', initials:'AG', role:'cotista', fazendas:['aguia'] },
-  'ceu':               { pass:'123456',      nome:'Cotista Céu Azul',first:'Cotista', initials:'CA', role:'cotista', fazendas:['ceu'] }
-};
+<script>
+// ─── CONFIGURAÇÃO SUPABASE ──────────────────────────────────────────────────
+const SUPABASE_URL = 'https://nzodyzwupjmurhdprxja.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_tmPdpiBrxveUSqrqWjDMUw_0Y36NJbm';
+const supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    storage: window.localStorage
+  }
+});
 
 let currentUser = null;
 
-// ─── TOKEN JWT ────────────────────────────────────────────────────────────────
-function getToken(){ return localStorage.getItem('fsa_token'); }
-function setToken(t){ localStorage.setItem('fsa_token', t); }
-function clearToken(){ localStorage.removeItem('fsa_token'); }
+// USERS_LOCAL mantido vazio para compat com código legado que ainda referencia
+const USERS_LOCAL = {};
 
-async function apiFetch(path, opts={}){
-  const token = getToken();
-  const res = await fetch(API_URL + path, {
-    ...opts,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { 'Authorization': 'Bearer ' + token } : {}),
-      ...(opts.headers || {})
-    }
-  });
-  if(!res.ok){
-    const err = await res.json().catch(()=>({ error: 'Erro desconhecido' }));
-    throw new Error(err.error || 'Erro na API');
-  }
-  return res.json();
+// ─── Shim apiFetch (mantém p/ funções de admin antigas até serem migradas) ──
+// Por enquanto sempre lança — funções caem no fallback
+async function apiFetch(){ throw new Error('Backend legado desativado — usar Supabase'); }
+function getToken(){ return null; }
+function setToken(){}
+function clearToken(){}
+
+// ─── Carrega perfil completo do usuário logado ─────────────────────────────
+async function carregarPerfil(authUser){
+  const { data: perfil, error } = await supa
+    .from('perfis')
+    .select('*')
+    .eq('id', authUser.id)
+    .single();
+  if(error || !perfil) throw new Error('Perfil não encontrado');
+  return {
+    ...perfil,
+    // Compatibilidade: admin tem fazendas='admin' (string), cotista mantém array
+    fazendas: perfil.role === 'admin' ? 'admin' : (perfil.fazendas || [])
+  };
 }
 
 // ─── LOGIN MODAL ──────────────────────────────────────────────────────────────
@@ -3858,33 +4033,34 @@ async function doLogin(){
   const err      = document.getElementById('lerr');
   const btn      = document.querySelector('.login-cta');
 
-  if(!email || !password){ err.style.display='block'; return; }
+  if(!email || !password){
+    err.textContent = 'Preencha email e senha.';
+    err.style.display='block';
+    return;
+  }
 
   btn.textContent = 'Entrando...';
   btn.disabled    = true;
 
   try {
-    // Tenta API primeiro
-    const data = await apiFetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password })
-    });
-    setToken(data.token);
-    currentUser = { ...data.user, first: data.user.nome.split(' ')[0] };
-    if(data.user.role === 'admin') currentUser.fazendas = 'admin';
+    const { data, error } = await supa.auth.signInWithPassword({ email, password });
+    if(error) throw error;
+
+    currentUser = await carregarPerfil(data.user);
     entrarNoApp(currentUser);
 
-  } catch(apiErr) {
-    // Fallback local (modo demonstração)
-    const u = USERS_LOCAL[email];
-    if(u && u.pass === password){
-      currentUser = { ...u };
-      entrarNoApp(currentUser);
-    } else {
+  } catch(e) {
+    console.error('Login error:', e);
+    const msg = (e && e.message) || '';
+    if(msg.toLowerCase().includes('invalid') || msg.toLowerCase().includes('credentials')){
       err.textContent = 'Credenciais inválidas.';
-      err.style.display = 'block';
-      document.getElementById('lp').value = '';
+    } else if(msg.includes('Perfil não encontrado')){
+      err.textContent = 'Usuário sem perfil configurado. Contate o administrador.';
+    } else {
+      err.textContent = 'Erro ao fazer login. Tente novamente.';
     }
+    err.style.display = 'block';
+    document.getElementById('lp').value = '';
   } finally {
     btn.textContent = 'Entrar';
     btn.disabled    = false;
@@ -3902,19 +4078,27 @@ function entrarNoApp(u){
   setTimeout(observeAnims, 200);
 }
 
-// Restaura sessão ao recarregar (só funciona com backend)
+// Restaura sessão ao recarregar (usa o Supabase Auth)
 async function restaurarSessao(){
-  const token = getToken();
-  if(!token) return;
   try {
-    const user = await apiFetch('/api/me');
-    currentUser = { ...user, first: user.nome.split(' ')[0] };
-    if(user.role === 'admin') currentUser.fazendas = 'admin';
+    const { data: { session } } = await supa.auth.getSession();
+    if(!session) return;
+    currentUser = await carregarPerfil(session.user);
     entrarNoApp(currentUser);
-  } catch {
-    clearToken();
+  } catch(e) {
+    console.error('Erro restaurando sessão:', e);
+    await supa.auth.signOut().catch(()=>{});
   }
 }
+
+// Auto-logout quando a sessão expira ou é invalidada em outra aba
+supa.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT' && currentUser){
+    currentUser = null;
+    document.getElementById('app').style.display='none';
+    document.getElementById('landing').style.display='block';
+  }
+});
 
 // ─── PERMISSÕES DE FAZENDA ───────────────────────────────────────────────────
 function temAcesso(fazenda){
@@ -4001,10 +4185,16 @@ const FAZENDA_DATA = {
     ],
     highlight:{label:'Valorização sobre o custo total',val:'240%',note:'Adquirida por R$ 16,1mi · negociada por R$ 55mi'},
     info:[
-      {label:'Cultura',val:'Soja · 650 ha plantados'},
-      {label:'Infraestrutura',val:'Pavilhão 1.400 m² · solo preparado'},
-      {label:'Licenças',val:'Derrubada 604/2019 · Operação 4145/2018-M'},
-      {label:'Coordenadas',val:'11°7\'33" S · 47°59\'50" O · 390 m alt.'}
+      {label:'Cultura',val:'Soja · 650 ha plantados em operação'},
+      {label:'Pavilhão',val:'1.400 m² construídos'},
+      {label:'Conjunto administrativo',val:'Sede administrativa e residencial completa'},
+      {label:'Preparação de solo',val:'650 ha preparados e plantados'},
+      {label:'Poço artesiano',val:'Abastecimento hídrico próprio'},
+      {label:'Infraestrutura elétrica',val:'Rede elétrica implantada'},
+      {label:'Licenças',val:'Derrubada 604/2019 · Queima 2501/2019 · Operação 4145/2018-M'},
+      {label:'Distância de Palmas',val:'155 km'},
+      {label:'Altitude',val:'390 m'},
+      {label:'Coordenadas GPS',val:'11°7\'33" S · 47°59\'50" O'}
     ],
     aquifer:null
   },
@@ -4018,7 +4208,7 @@ const FAZENDA_DATA = {
       {label:'Projeção 5a cons.',val:'R$ 400mi',cls:'gold'},
       {label:'Retorno anual · 5a',val:'30,05%',cls:'up'}
     ],
-    highlight:{label:'Comprada abaixo do mercado',val:'R$ 14mi',note:'Ganho imediato sobre o valor de mercado'},
+    highlight:null,
     info:[
       {label:'Irrigação',val:'11 pivôs centrais · 2.820 ha'},
       {label:'Licença ambiental',val:'PI-LP 00065-0/2026 · emitida'},
@@ -4053,13 +4243,33 @@ function abrirFazendaHub(faz){
 
   // Highlight
   const hl = document.getElementById('hub-highlight');
-  hl.innerHTML = `<div class="hh-main"><div class="hh-label">${d.highlight.label}</div><div class="hh-val">${d.highlight.val}</div><div class="hh-note">${d.highlight.note}</div></div>`;
+  if(d.highlight){
+    hl.style.display = '';
+    hl.innerHTML = `<div class="hh-main"><div class="hh-label">${d.highlight.label}</div><div class="hh-val">${d.highlight.val}</div><div class="hh-note">${d.highlight.note}</div></div>`;
+  } else {
+    hl.style.display = 'none';
+    hl.innerHTML = '';
+  }
 
-  // Info grid
+  // Info grid — unified card
+  const ICONS = {
+    'Cultura':'🌱','Pavilhão':'🏗️','Conjunto administrativo':'🏠',
+    'Preparação de solo':'🚜','Poço artesiano':'💧','Infraestrutura elétrica':'⚡',
+    'Licenças':'📋','Distância de Palmas':'📍','Altitude':'⛰️',
+    'Coordenadas GPS':'🗺️','Irrigação':'💦','Licença ambiental':'🛡️',
+    'Clima':'🌤️','Solo':'🪨','Aquífero':'💎'
+  };
   const infoEl = document.getElementById('hub-info-detail');
-  infoEl.innerHTML = d.info.map(i =>
-    `<div class="hi-block"><div class="hi-label">${i.label}</div><div class="hi-val">${i.val}</div></div>`
-  ).join('');
+  infoEl.innerHTML = `
+    <div class="hi-card">
+      <div class="hi-card-header">Infraestrutura & Dados Técnicos</div>
+      ${d.info.map(i=>`
+        <div class="hi-row">
+          <div class="hi-ico">${ICONS[i.label]||'📌'}</div>
+          <div class="hi-key">${i.label}</div>
+          <div class="hi-val">${i.val}</div>
+        </div>`).join('')}
+    </div>`;
 
   // Aquifer
   const aqEl = document.getElementById('hub-aquifer');
@@ -4111,18 +4321,18 @@ function renderHubSimulador(faz){
     <div class="sim-layout">
       <div class="sim-controls">
         <div class="sim-field">
-          <div class="sim-label">Número de cotas</div>
+          <div class="sim-label">Número de ações</div>
           <div class="sim-cota-picker">
             <button class="scp-btn" onclick="simAjustarCotas('${faz}',-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-            <div class="scp-display"><div class="scp-num" id="${prefix}-cotas-num">1</div><div class="scp-unit">cota</div></div>
+            <div class="scp-display"><div class="scp-num" id="${prefix}-cotas-num">1</div><div class="scp-unit">ação</div></div>
             <button class="scp-btn" onclick="simAjustarCotas('${faz}',1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           </div>
           <div class="scp-valor-wrap"><span class="scp-valor-lbl">Valor do aporte</span><span class="scp-valor" id="${prefix}-aporte-display">R$ 50.000</span></div>
           <div class="scp-chips">
-            <button class="scp-chip" onclick="simDefinirCotas('${faz}',1,this)">1 cota</button>
-            <button class="scp-chip" onclick="simDefinirCotas('${faz}',2,this)">2 cotas</button>
-            <button class="scp-chip" onclick="simDefinirCotas('${faz}',5,this)">5 cotas</button>
-            <button class="scp-chip" onclick="simDefinirCotas('${faz}',10,this)">10 cotas</button>
+            <button class="scp-chip" onclick="simDefinirCotas('${faz}',1,this)">1 ação</button>
+            <button class="scp-chip" onclick="simDefinirCotas('${faz}',2,this)">2 ações</button>
+            <button class="scp-chip" onclick="simDefinirCotas('${faz}',5,this)">5 ações</button>
+            <button class="scp-chip" onclick="simDefinirCotas('${faz}',10,this)">10 ações</button>
           </div>
         </div>
         <div class="sim-field">
@@ -4170,35 +4380,154 @@ function renderHubSimulador(faz){
 // ─── HUB: RENDER TIMELINE ──────────────────────────────────────────────────
 function renderHubTimeline(faz){
   const panel = document.getElementById('hub-progresso');
-  const items = faz==='aguia' ? [
-    {status:'done',date:'2018',title:'Aquisição da área',desc:'1.349 ha adquiridos em Monte do Carmo/TO por R$ 7,5mi (R$ 5.560/ha).'},
-    {status:'done',date:'2018 – 2019',title:'Licenciamento ambiental',desc:'Licenças de operação, derrubada e queima obtidas. Conformidade ambiental integral.'},
-    {status:'done',date:'2019 – 2024',title:'Transformação produtiva',desc:'650 ha preparados. Pavilhão 1.400m², infraestrutura elétrica, poço artesiano. Plantio de soja iniciado.'},
-    {status:'active',date:'2025 – Agora',title:'Negociação de venda',desc:'Em negociação ativa por R$ 55 milhões. Valorização de 240% sobre o custo total.'},
-    {status:'pending',date:'Previsão 2026',title:'Saída — venda e distribuição',desc:'Conclusão da negociação e distribuição proporcional entre os cotistas.'}
-  ] : [
-    {status:'done',date:'2025',title:'Aquisição da área',desc:'4.001 ha adquiridos R$ 14mi abaixo do valor de mercado.'},
-    {status:'done',date:'Mai 2026',title:'Licença ambiental emitida',desc:'LP PI-LP 00065-0/2026 emitida. Parecer AT.7111-0/2025 aprovado.'},
-    {status:'active',date:'2026 – Agora',title:'Implantação dos 11 pivôs',desc:'Obras de irrigação sobre 2.820 ha. Aquífero Cabeças Gurguéia.'},
-    {status:'pending',date:'Previsão 2027',title:'1ª safra — entrada em produção',desc:'Produção de 4 sacas/ha, escalando até 14 sacas/ha no 4º ano.'},
-    {status:'pending',date:'2028 – 2032',title:'Consolidação e arrendamento',desc:'Operação plena. Projeção de venda: R$ 400mi – R$ 600mi.'},
-    {status:'pending',date:'2030 – 2032',title:'Saída — venda e distribuição',desc:'Venda da fazenda valorizada. TIR projetada: 30,05% a 64,67% a.a.'}
+
+  if(faz === 'aguia'){
+    const items = [
+      {status:'done',date:'2018',title:'Aquisição da área',desc:'1.349 ha adquiridos em Monte do Carmo/TO. Solo identificado com alto potencial de valorização.'},
+      {status:'done',date:'2018 – 2019',title:'Licenciamento ambiental',desc:'Licenças de operação, derrubada e queima obtidas. Conformidade ambiental integral junto ao órgão estadual do Tocantins.'},
+      {status:'done',date:'2019 – 2024',title:'Transformação produtiva',desc:'650 ha preparados. Pavilhão 1.400m², infraestrutura elétrica, poço artesiano implantados. Plantio de soja iniciado.'},
+      {status:'active',date:'2025 – Agora',title:'Negociação de venda',desc:'Em negociação ativa por R$ 55 milhões. Valorização de 240% sobre o custo total de R$ 16,1mi.'},
+      {status:'pending',date:'Previsão 2026',title:'Saída — venda e distribuição',desc:'Conclusão da negociação e distribuição proporcional entre os acionistas.'}
+    ];
+    const progress = 75;
+    panel.innerHTML = `
+      <div class="tl-progress-pill" style="margin-bottom:24px"><div class="tpp-fill" style="width:${progress}%"></div><span>${progress}% concluído</span></div>
+      <div class="tl-track">${items.map((it,i) => `
+        <div class="tl-item ${it.status}">
+          <div class="tl-marker tm-${it.status}">${it.status==='done'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>':it.status==='active'?'<div class="tm-pulse"></div>':''}</div>
+          ${i<items.length-1?'<div class="tl-connector"></div>':''}
+          <div class="tl-content">
+            <div class="tl-date">${it.date}</div>
+            <div class="tl-title">${it.title}</div>
+            <div class="tl-desc">${it.desc}</div>
+            <div class="tl-tag tag-${it.status}">${it.status==='done'?'Concluído':it.status==='active'?'Em andamento':'Próximo'}</div>
+          </div>
+        </div>`).join('')}
+      </div>`;
+    return;
+  }
+
+  // ─── CÉU AZUL — 5 fases clicáveis ────────────────────────────────────────
+  const fases = [
+    {
+      num:'I',
+      titulo:'Aquisição',
+      status:'done',
+      resumo:'Compra de 4.001 ha — Matrículas 7672, 7673 e 7674',
+      itens:[
+        'Aquisição do terreno total de 4.001 hectares em Morro Cabeça no Tempo, Piauí',
+        'Registro das três matrículas (7672, 7673 e 7674) junto ao Cartório de Registro de Imóveis',
+        'Contrato de aquisição formalizado entre Fazenda Céu Azul S.A. e LCRP Holding + Thrive Holding',
+        'Área adquirida substancialmente abaixo do valor de mercado regional'
+      ]
+    },
+    {
+      num:'II',
+      titulo:'Infraestrutura',
+      status:'active',
+      resumo:'Construção do complexo operacional e residencial completo',
+      itens:[
+        'Pavilhão de armazenagem de máquinas e equipamentos — 1.400 m²',
+        'Pavilhão de armazenagem de produtos químicos, fertilizantes e sementes — 1.000 m²',
+        'Rampa de lavagem de equipamentos conforme projeto',
+        'Tanque de abastecimento de diesel conforme projeto',
+        'Depósito de embalagens químicas vazias — 80 m²',
+        'Reservatório de água potável — 20 m³',
+        'Casa sede — 200 m²',
+        'Casa do gerente — 100 m²',
+        'Casa do caseiro — 100 m²',
+        'Refeitório com equipamentos — 100 m²',
+        'Alojamento com 10 quartos e banheiro — 150 m²',
+        'Estrutura de comunicação e segurança — antena de internet e câmeras',
+        'Ponto de acesso com disponibilidade de energia trifásica'
+      ]
+    },
+    {
+      num:'III',
+      titulo:'Preparo do Solo',
+      status:'pending',
+      resumo:'Abertura e preparo agrícola da área de plantio',
+      itens:[
+        'Processo de derrubada e corrente da vegetação nativa',
+        'Processo de leiramento do cerrado e queima controlada',
+        'Gradagem pesada 42" — primeira passagem',
+        'Aplicação de calcário — 5 toneladas por hectare',
+        'Gradagem pesada 42" — segunda passagem',
+        'Processo de leiramento de pedras e trituração',
+        'Aplicação de fertilizante — superfosfato simples (fosfato)',
+        'Licenciamento ambiental, documentação e georreferenciamento da área'
+      ]
+    },
+    {
+      num:'IV',
+      titulo:'Silo de Armazenagem',
+      status:'pending',
+      resumo:'Implantação do complexo de armazenagem de grãos',
+      itens:[
+        'Silo de armazenagem de grãos conforme projeto',
+        'Secador de grãos com capacidade compatível com a produção',
+        'Classificador e balança de pesagem conforme projeto'
+      ]
+    },
+    {
+      num:'V',
+      titulo:'Pacote de Irrigação',
+      status:'pending',
+      resumo:'11 pivôs centrais sobre o Aquífero Cabeças Gurguéia',
+      itens:[
+        'Poços artesianos profundos captando o Aquífero Cabeças Gurguéia — 3ª maior reserva subterrânea do Brasil',
+        '3 lagoas artificiais com geomembrana e instalação completa',
+        '11 pivôs centrais de irrigação — cobrindo os 2.820 ha de área de plantio',
+        'Sistema integrado de irrigação para produção perene independente de chuvas'
+      ]
+    }
   ];
-  const progress = faz==='aguia' ? 75 : 30;
+
+  const statusLabel = {done:'Concluída',active:'Em andamento',pending:'Prevista'};
+  const statusColor = {done:'tag-done',active:'tag-active',pending:'tag-pending'};
+
   panel.innerHTML = `
-    <div class="tl-progress-pill" style="margin-bottom:24px"><div class="tpp-fill" style="width:${progress}%"></div><span>${progress}% concluído</span></div>
-    <div class="tl-track">${items.map((it,i) => `
-      <div class="tl-item ${it.status}">
-        <div class="tl-marker tm-${it.status}">${it.status==='done'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>':it.status==='active'?'<div class="tm-pulse"></div>':''}</div>
-        ${i<items.length-1?'<div class="tl-connector"></div>':''}
-        <div class="tl-content">
-          <div class="tl-date">${it.date}</div>
-          <div class="tl-title">${it.title}</div>
-          <div class="tl-desc">${it.desc}</div>
-          <div class="tl-tag tag-${it.status}">${it.status==='done'?'Concluído':it.status==='active'?'Em andamento':'Próximo'}</div>
+    <div class="tl-progress-pill" style="margin-bottom:32px">
+      <div class="tpp-fill" style="width:20%"></div>
+      <span>Fase I concluída · II em andamento</span>
+    </div>
+
+    <div class="fase-list">
+      ${fases.map((f,idx) => `
+        <div class="fase-item ${f.status}" id="fase-ceu-${idx}">
+          <div class="fase-header" onclick="toggleFase('fase-ceu-${idx}')">
+            <div class="fase-num-ball ${f.status}">
+              ${f.status==='done'
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>'
+                : f.status==='active'
+                  ? '<div class="tm-pulse" style="inset:-3px"></div>'
+                  : f.num}
+            </div>
+            <div class="fase-header-content">
+              <div class="fase-label">Fase ${f.num} · <span class="tl-tag ${statusColor[f.status]}" style="padding:1px 6px;font-size:9px">${statusLabel[f.status]}</span></div>
+              <div class="fase-titulo">${f.titulo}</div>
+              <div class="fase-resumo">${f.resumo}</div>
+            </div>
+            <div class="fase-chevron" id="chev-fase-ceu-${idx}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="fase-detail" id="detail-fase-ceu-${idx}" style="display:none">
+            <ul class="fase-ul">
+              ${f.itens.map(it=>`<li class="fase-li">${it}</li>`).join('')}
+            </ul>
+          </div>
         </div>
-      </div>`).join('')}
+      `).join('')}
     </div>`;
+}
+
+function toggleFase(id){
+  const detail = document.getElementById('detail-'+id);
+  const chev   = document.getElementById('chev-'+id);
+  const isOpen = detail.style.display !== 'none';
+  detail.style.display = isOpen ? 'none' : 'block';
+  chev.classList.toggle('open', !isOpen);
 }
 
 // ─── HUB: RENDER RETORNO ──────────────────────────────────────────────────
@@ -4232,20 +4561,51 @@ function renderHubRetorno(faz){
   } else {
     panel.innerHTML = `
       <div class="sec-eyebrow" style="margin-bottom:16px">Retorno projetado por cenário</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text);margin-bottom:24px">R$ 14 milhões abaixo do mercado.<br>Projeção de até R$ 600mi.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text);margin-bottom:24px">Projeção de até R$ 600mi.</div>
       <div style="background:var(--surf2);border:1px solid var(--line2);border-radius:var(--r-lg);overflow:hidden;margin-bottom:24px">
-        <div style="padding:16px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--line2)">Cenário cauteloso vs. otimista</div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);font-size:11px;text-align:center;border-bottom:1px solid var(--line2);padding:10px 0;color:var(--text3)">
-          <div>Prazo</div><div>Retorno anual</div><div>Ganho / cota</div><div>Retorno anual</div><div>Ganho / cota</div>
+        <div style="padding:16px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--line2)">Comparação por prazo · cauteloso vs. otimista</div>
+
+        <!-- GROUPED SCENARIO HEADERS -->
+        <div style="display:grid;grid-template-columns:0.7fr 2fr 2fr;border-bottom:1px solid var(--line2)">
+          <div></div>
+          <div style="padding:14px 0;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text2);background:rgba(255,255,255,0.025);border-right:1px solid var(--line2);font-weight:500">Cauteloso</div>
+          <div style="padding:14px 0;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold2);background:var(--gold-faint);font-weight:500">Otimista</div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);font-size:13px;text-align:center;padding:14px 0;border-bottom:1px solid var(--line2)">
-          <div style="color:var(--text)">3 anos</div><div style="color:var(--up)">40,19%</div><div style="color:var(--text)">R$ 87.773</div><div style="color:var(--up)">64,67%</div><div style="color:var(--gold)">R$ 173.265</div>
+
+        <!-- COLUMN SUBHEADERS -->
+        <div style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr 1fr;font-size:10.5px;text-align:center;border-bottom:1px solid var(--line2);color:var(--text3);letter-spacing:0.5px">
+          <div style="padding:10px 0">Prazo</div>
+          <div style="padding:10px 0">Retorno a.a.</div>
+          <div style="padding:10px 0;border-right:1px solid var(--line2)">Ganho / ação</div>
+          <div style="padding:10px 0;background:var(--gold-faint)">Retorno a.a.</div>
+          <div style="padding:10px 0;background:var(--gold-faint)">Ganho / ação</div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);font-size:13px;text-align:center;padding:14px 0;border-bottom:1px solid var(--line2)">
-          <div style="color:var(--text)">5 anos</div><div style="color:var(--up)">30,05%</div><div style="color:var(--text)">R$ 136.010</div><div style="color:var(--up)">42,02%</div><div style="color:var(--gold)">R$ 238.835</div>
+
+        <!-- ROW: 3 ANOS -->
+        <div style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr 1fr;font-size:13px;text-align:center;border-bottom:1px solid var(--line2);align-items:stretch">
+          <div style="padding:16px 0;color:var(--text);font-weight:500">3 anos</div>
+          <div style="padding:16px 0;color:var(--up)">40,19%</div>
+          <div style="padding:16px 0;color:var(--text);border-right:1px solid var(--line2)">R$ 87.773</div>
+          <div style="padding:16px 0;color:var(--up);background:var(--gold-faint)">64,67%<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+24,5 p.p.</div></div>
+          <div style="padding:16px 0;color:var(--gold);background:var(--gold-faint);font-weight:500">R$ 173.265<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+R$ 85.492</div></div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);font-size:13px;text-align:center;padding:14px 0">
-          <div style="color:var(--text)">7 anos</div><div style="color:var(--up)">23,11%</div><div style="color:var(--text)">R$ 164.326</div><div style="color:var(--up)">30,68%</div><div style="color:var(--gold)">R$ 275.464</div>
+
+        <!-- ROW: 5 ANOS -->
+        <div style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr 1fr;font-size:13px;text-align:center;border-bottom:1px solid var(--line2);align-items:stretch">
+          <div style="padding:16px 0;color:var(--text);font-weight:500">5 anos</div>
+          <div style="padding:16px 0;color:var(--up)">30,05%</div>
+          <div style="padding:16px 0;color:var(--text);border-right:1px solid var(--line2)">R$ 136.010</div>
+          <div style="padding:16px 0;color:var(--up);background:var(--gold-faint)">42,02%<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+12,0 p.p.</div></div>
+          <div style="padding:16px 0;color:var(--gold);background:var(--gold-faint);font-weight:500">R$ 238.835<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+R$ 102.825</div></div>
+        </div>
+
+        <!-- ROW: 7 ANOS -->
+        <div style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr 1fr;font-size:13px;text-align:center;align-items:stretch">
+          <div style="padding:16px 0;color:var(--text);font-weight:500">7 anos</div>
+          <div style="padding:16px 0;color:var(--up)">23,11%</div>
+          <div style="padding:16px 0;color:var(--text);border-right:1px solid var(--line2)">R$ 164.326</div>
+          <div style="padding:16px 0;color:var(--up);background:var(--gold-faint)">30,68%<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+7,6 p.p.</div></div>
+          <div style="padding:16px 0;color:var(--gold);background:var(--gold-faint);font-weight:500">R$ 275.464<div style="font-size:10px;color:var(--text3);margin-top:3px;font-weight:400">+R$ 111.138</div></div>
         </div>
       </div>
       <div class="hub-aquifer" style="display:block"><div class="ha-title">Dividend yield projetado</div><div class="ha-desc">DY 4º ano safra: 3,88% a.a. (0,32% a.m.) · Premissa de arrendamento: 4 sacas/ha no 1º ano, escalando até 14 sacas/ha no 4º ano.</div></div>`;
@@ -4256,7 +4616,7 @@ function renderHubRetorno(faz){
 function renderHubDocs(faz){
   const panel = document.getElementById('hub-docs');
   const govDocs = [
-    {id:'contrato',nome:'Contrato de Adesão · Fazenda S/A',cat:'Governança · Jan 2026',statusTxt:'Assinado',status:'ok',desc:'Formaliza o investimento e estabelece direitos e deveres do cotista.',paginas:8,tamanho:'1,2 MB',url:null},
+    {id:'contrato',nome:'Contrato de Adesão · Fazenda S/A',cat:'Governança · Jan 2026',statusTxt:'Assinado',status:'ok',desc:'Formaliza o investimento e estabelece direitos e deveres do acionista.',paginas:8,tamanho:'1,2 MB',url:null},
     {id:'ata',nome:'Ata de Assembleia Geral',cat:'Societário · Mar 2026',statusTxt:'Novo',status:'novo',desc:'Deliberações da AGO de Março de 2026.',paginas:12,tamanho:'2,4 MB',url:null},
     {id:'junta',nome:'Registro na Junta Comercial',cat:'Transparência · Mar 2026',statusTxt:'Registrado',status:'ok',desc:'Registro oficial publicado no Diário Oficial.',paginas:4,tamanho:'0,8 MB',url:null}
   ];
@@ -4288,7 +4648,7 @@ function renderHubDocs(faz){
 }
 const SIM_DADOS = {
   aguia: {
-    cons: { 3:{tir:40.19,tirP:175.55,ganho:87773}, 5:{tir:25.35,tirP:209.44,ganho:109044}, 7:{tir:19.12,tirP:240.38,ganho:120190} },
+    cons: { 3:{tir:40.69,tirP:178.49,ganho:89245}, 5:{tir:25.35,tirP:209.44,ganho:104720}, 7:{tir:19.12,tirP:240.38,ganho:120190} },
     otim: { 3:{tir:55.00,tirP:280.00,ganho:140000}, 5:{tir:35.00,tirP:310.00,ganho:155000}, 7:{tir:28.00,tirP:360.00,ganho:180000} },
     cdiAno: 14.5, terraAno: 12.67, cotaBase: 50000
   },
@@ -4343,7 +4703,7 @@ function _atualizarPickerCotas(faz){
   const numEl  = document.getElementById(prefix+'-cotas-num');
   const unitEl = numEl?.nextElementSibling;
   if(numEl) numEl.textContent = cotas;
-  if(unitEl) unitEl.textContent = cotas===1 ? 'cota' : 'cotas';
+  if(unitEl) unitEl.textContent = cotas===1 ? 'ação' : 'ações';
 }
 
 function calcSim(faz){
@@ -4576,27 +4936,37 @@ function adminTab(id, el){
   if(id==='documentos-admin')  renderAdminDocs();
 }
 
-// ─── CARREGAR COTISTAS ────────────────────────────────────────────────────────
+// ─── CARREGAR ACIONISTAS (via Supabase) ──────────────────────────────────────
 async function carregarCotistas(){
   const tbody = document.getElementById('admin-tbody');
   tbody.innerHTML = '<tr><td colspan="6" class="admin-loading">Carregando...</td></tr>';
   try {
-    _cotistas = await apiFetch('/api/admin/users');
-    renderCotistas(_cotistas);
-  } catch {
-    // Fallback local
-    _cotistas = Object.entries(USERS_LOCAL).map(([email, u], i) => ({
-      id: 'local-'+i, email, nome: u.nome, initials: u.initials,
-      role: u.role, fazendas: u.fazendas==='admin'?[]:u.fazendas, ativo: true
+    const { data, error } = await supa
+      .from('perfis')
+      .select('id, email, nome, initials, role, fazendas, ativo')
+      .order('role', { ascending: false })
+      .order('email');
+    if(error) throw error;
+    _cotistas = (data || []).map(p => ({
+      id: p.id,
+      email: p.email,
+      nome: p.nome,
+      initials: p.initials,
+      role: p.role,
+      fazendas: p.fazendas || [],
+      ativo: p.ativo !== false
     }));
     renderCotistas(_cotistas);
+  } catch(e) {
+    console.error('Erro carregando acionistas:', e);
+    tbody.innerHTML = '<tr><td colspan="6" class="admin-loading">Erro ao carregar acionistas. Verifique permissões de RLS no Supabase.</td></tr>';
   }
 }
 
 function renderCotistas(lista){
   const tbody = document.getElementById('admin-tbody');
   if(!lista.length){
-    tbody.innerHTML = '<tr><td colspan="6" class="admin-loading">Nenhum cotista encontrado.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" class="admin-loading">Nenhum acionista encontrado.</td></tr>';
     return;
   }
   tbody.innerHTML = lista.map(u => `
@@ -4618,7 +4988,7 @@ function renderCotistas(lista){
               ).join('') || '<span style="color:var(--text3);font-size:12px">Nenhuma</span>'}
         </div>
       </td>
-      <td><span class="at-role ${u.role==='admin'?'atr-admin':'atr-cotista'}">${u.role}</span></td>
+      <td><span class="at-role ${u.role==='admin'?'atr-admin':'atr-cotista'}">${u.role==='admin'?'Admin':'Acionista'}</span></td>
       <td>
         <span class="at-status ${u.ativo?'ats-on':'ats-off'}">
           <div class="ats-dot"></div>${u.ativo?'Ativo':'Inativo'}
@@ -4650,7 +5020,7 @@ function filtrarCotistas(){
 function abrirModalCotista(){
   _editandoId = null;
   _ativoAtual = true;
-  document.getElementById('modal-cotista-titulo').textContent = 'Novo cotista';
+  document.getElementById('modal-cotista-titulo').textContent = 'Novo acionista';
   document.getElementById('mc-id').value = '';
   document.getElementById('mc-nome').value = '';
   document.getElementById('mc-initials').value = '';
@@ -4670,7 +5040,7 @@ function editarCotista(id){
   if(!u) return;
   _editandoId = id;
   _ativoAtual = u.ativo;
-  document.getElementById('modal-cotista-titulo').textContent = 'Editar cotista';
+  document.getElementById('modal-cotista-titulo').textContent = 'Editar acionista';
   document.getElementById('mc-id').value = id;
   document.getElementById('mc-nome').value = u.nome;
   document.getElementById('mc-initials').value = u.initials;
@@ -4731,12 +5101,12 @@ async function salvarCotista(){
   try {
     if(_editandoId){
       await apiFetch(`/api/admin/users/${_editandoId}`, { method:'PATCH', body: JSON.stringify(payload) });
-      showToast('✓ Cotista atualizado com sucesso');
+      showToast('✓ Acionista atualizado com sucesso');
     } else {
-      if(!senha){ throw new Error('Senha é obrigatória para novo cotista.'); }
+      if(!senha){ throw new Error('Senha é obrigatória para novo acionista.'); }
       payload.password = senha;
       await apiFetch('/api/admin/users', { method:'POST', body: JSON.stringify(payload) });
-      showToast('✓ Cotista criado com sucesso');
+      showToast('✓ Acionista criado com sucesso');
     }
     fecharModalCotista();
     carregarCotistas();
@@ -4745,7 +5115,7 @@ async function salvarCotista(){
     errMsg.textContent = e.message;
     errEl.style.display = 'flex';
   } finally {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg> Salvar cotista';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg> Salvar acionista';
     btn.disabled = false;
   }
 }
@@ -4753,7 +5123,7 @@ async function salvarCotista(){
 async function toggleCotistaAtivo(id, novoAtivo){
   try {
     await apiFetch(`/api/admin/users/${id}`, { method:'PATCH', body: JSON.stringify({ ativo: novoAtivo }) });
-    showToast(novoAtivo ? '✓ Cotista ativado' : '✓ Cotista desativado');
+    showToast(novoAtivo ? '✓ Acionista ativado' : '✓ Acionista desativado');
     carregarCotistas();
     carregarStats();
   } catch(e){ showToast('Erro: '+e.message); }
@@ -4993,12 +5363,12 @@ function setUser(u){
   document.getElementById('ph-avatar').textContent = u.initials;
   document.getElementById('ph-name').textContent = u.nome;
   document.getElementById('pf-nome').value = u.nome;
-  document.getElementById('pf-email').value = Object.keys(USERS).find(k=>USERS[k]===u)||'';
+  document.getElementById('pf-email').value = u.email || '';
 }
 
-function doLogout(){
+async function doLogout(){
+  await supa.auth.signOut().catch(()=>{});
   currentUser = null;
-  clearToken();
   document.getElementById('app').style.display='none';
   document.getElementById('landing').style.display='block';
   document.getElementById('lp').value='';
@@ -5093,7 +5463,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       </svg>
     </div>
     <div class="ad-title">Acesso restrito</div>
-    <div class="ad-desc">Você não possui cotas na <strong id="ad-name">esta fazenda</strong>.<br>Entre em contato com a administração para obter acesso.</div>
+    <div class="ad-desc">Você não possui ações na <strong id="ad-name">esta fazenda</strong>.<br>Entre em contato com a administração para obter acesso.</div>
     <div class="ad-contact">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       luciano@lcrp.com.br
