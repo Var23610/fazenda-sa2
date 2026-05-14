@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fazenda S/A · Portal Privado</title>
+<title>Fazenda Céu Azul S/A · Portal Privado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -1552,6 +1552,34 @@ body.light-mode .fase-detail{border-color:rgba(14,26,14,0.07)!important}
 body.light-mode .fase-titulo{color:rgba(14,26,14,0.88)!important}
 body.light-mode .fase-li{background:var(--surf1)!important;color:rgba(14,26,14,0.60)!important}
 
+/* CHECKBOX DE OBRAS — marcação individual por item */
+.fase-li{align-items:center}
+.fase-li-check{
+  width:20px;height:20px;border-radius:5px;
+  border:1.5px solid var(--line2);background:var(--surf2);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.fase-li-check svg{display:none;color:#3d9e6a}
+.fase-li.done .fase-li-check{background:rgba(61,158,106,0.18);border-color:#3d9e6a}
+.fase-li.done .fase-li-check svg{display:block}
+.fase-li.done .fase-li-text{color:var(--text3);text-decoration:line-through}
+.fase-li-check.clickable{cursor:pointer}
+.fase-li-check.clickable:hover{border-color:var(--gold);background:var(--gold-faint)}
+.fase-li-text{flex:1;line-height:1.5}
+.fase-progress-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);background:var(--surf3);
+  padding:4px 10px;border-radius:50px;border:1px solid var(--line2);
+  margin-left:8px;
+}
+.fase-progress-pill.has-progress{color:var(--gold);border-color:var(--gold-border)}
+.fase-progress-pill.completo{color:var(--up);border-color:rgba(61,158,106,0.3);background:rgba(61,158,106,0.08)}
+
+body.light-mode .fase-li-check{background:var(--surf3)!important;border-color:rgba(14,26,14,0.15)!important}
+body.light-mode .fase-li.done .fase-li-text{color:rgba(14,26,14,0.40)!important}
+
 /* ===================== TIMELINE ===================== */
 .tl-block{padding:0 60px 56px}
 .tl-faz-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
@@ -2656,7 +2684,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
   <!-- NAV PÚBLICA -->
   <nav class="topnav pub-nav">
-    <div class="nav-logo">Fazenda <span>S/A</span></div>
+    <div class="nav-logo">Fazenda Céu Azul <span>S/A</span></div>
     <div class="nav-links">
       <a class="nav-link active" href="#land-hero">Início</a>
       <a class="nav-link" href="#land-oportunidade">A oportunidade</a>
@@ -2688,7 +2716,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <div class="hero-grid"></div>
     <div class="hero-bottom-fade"></div>
     <div class="land-hero-content">
-      <div class="lhc-eyebrow">Fazenda S/A · Investimento 2026</div>
+      <div class="lhc-eyebrow">Fazenda Céu Azul S/A · Investimento 2026</div>
       <h1 class="lhc-title">Terra como ativo.<br><span>Rentabilidade como resultado.</span></h1>
       <p class="lhc-sub">Um modelo estruturado de investimento em fazendas com garantia real, segurança jurídica e rentabilidade acima do mercado tradicional.</p>
       <div class="lhc-btns">
@@ -2782,7 +2810,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <h2 class="ls-title">Retorno acima dos principais referenciais.</h2>
       <div class="land-bench">
         <div class="lb-row">
-          <span class="lb-name">Fazenda S/A (3 anos)</span>
+          <span class="lb-name">Fazenda Céu Azul S/A (3 anos)</span>
           <div class="lb-bar"><div class="lb-fill lbf-gold" style="width:100%"></div></div>
           <span class="lb-val lb-gold">277% do CDI</span>
         </div>
@@ -2859,7 +2887,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="lc-card-val">Acessar o portal</div>
         </div>
       </div>
-      <div class="lc-footer">Fazenda S/A · Investimento 2026 · Todos os direitos reservados</div>
+      <div class="lc-footer">Fazenda Céu Azul S/A · Investimento 2026 · Todos os direitos reservados</div>
     </div>
   </section>
 </div>
@@ -2868,7 +2896,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 <div class="login-modal-overlay" id="login-modal" onclick="fecharLogin()">
   <div class="login-modal" onclick="event.stopPropagation()">
     <button class="lm-close" onclick="fecharLogin()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <div class="lm-logo">Fazenda <span>S/A</span></div>
+    <div class="lm-logo">Fazenda Céu Azul <span>S/A</span></div>
     <div class="lm-title">Portal do Acionista</div>
     <div class="lm-sub">Acesso exclusivo para acionistas credenciados</div>
     <div class="lf">
@@ -2892,7 +2920,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
   <!-- NAV -->
   <nav class="topnav">
-    <div class="nav-logo">Fazenda <span>S/A</span></div>
+    <div class="nav-logo">Fazenda Céu Azul <span>S/A</span></div>
     <div class="nav-links">
       <a class="nav-link active" onclick="showSection('visao',this)">Início</a>
       <a class="nav-link" onclick="showSection('projetos',this)">Projetos</a>
@@ -2956,7 +2984,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div>
             <div class="hero-greeting">Bem-vindo de volta</div>
             <div class="hero-name" id="hero-name">João<br>Acionista</div>
-            <div class="hero-sub">Fazenda S/A · Investidor ativo</div>
+            <div class="hero-sub">Fazenda Céu Azul S/A · Investidor ativo</div>
           </div>
 
           <!-- FOTO DO TRATOR -->
@@ -3640,11 +3668,15 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     </div>
 
     <div class="dd-footer">
+      <button class="dd-btn-solicitar" id="dd-btn-download" style="display:none" onclick="baixarDoc()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Baixar PDF
+      </button>
       <button class="dd-btn-solicitar" id="dd-btn-abrir" style="display:none" onclick="">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         Abrir no Drive
       </button>
-      <button class="dd-btn-solicitar" onclick="solicitarDoc()">
+      <button class="dd-btn-solicitar" id="dd-btn-solicitar" onclick="solicitarDoc()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Solicitar acesso
       </button>
@@ -3685,16 +3717,21 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <!-- TAB: COTISTAS -->
     <div class="admin-panel active" id="admin-usuarios">
 
+      <!-- AVISO: gestão de acionistas é manual via Supabase Dashboard -->
+      <div class="admin-doc-intro" style="margin-bottom:20px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" style="color:var(--gold);flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div style="font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px">Gestão de acionistas é feita via Supabase Dashboard</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.7">Para criar, editar ou desativar um acionista: <a href="https://supabase.com/dashboard/project/nzodyzwupjmurhdprxja/auth/users" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline">Abrir Authentication no Supabase →</a> · Esta listagem é somente leitura.</div>
+        </div>
+      </div>
+
       <!-- BARRA DE AÇÕES -->
       <div class="admin-toolbar">
         <div class="admin-search-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input class="admin-search" type="text" id="admin-search" placeholder="Buscar acionista..." oninput="filtrarCotistas()">
         </div>
-        <button class="admin-btn-new" onclick="abrirModalCotista()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Novo acionista
-        </button>
       </div>
 
       <!-- TABELA DE COTISTAS -->
@@ -3911,7 +3948,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <div class="perfil-hero anim">
       <div class="ph-avatar" id="ph-avatar">JC</div>
       <div class="ph-info">
-        <div class="ph-label">Acionista · Fazenda S/A</div>
+        <div class="ph-label">Acionista · Fazenda Céu Azul S/A</div>
         <div class="ph-name" id="ph-name">João Acionista</div>
         <div class="ph-since">Membro desde Janeiro de 2026 · Investidor Ativo</div>
       </div>
@@ -3982,6 +4019,89 @@ const supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
 });
 
 let currentUser = null;
+
+// Status das obras (Fase II e diante da Céu Azul) — admin marca cada item individualmente
+// Chave: "ceu-{faseIdx}-{itemIdx}" → valor: boolean
+const obrasStatus = {};
+
+async function carregarObrasStatus(){
+  try {
+    const { data, error } = await supa.from('obras_status').select('*');
+    if(error){ console.warn('obras_status indisponível:', error.message); return; }
+    Object.keys(obrasStatus).forEach(k => delete obrasStatus[k]);
+    (data || []).forEach(r => { obrasStatus[r.id] = r.done; });
+  } catch(e){ console.error(e); }
+}
+
+async function toggleObra(itemId, faseIdx){
+  if(!currentUser || currentUser.role !== 'admin') return;
+  const novo = !obrasStatus[itemId];
+  obrasStatus[itemId] = novo;
+  // Atualiza UI imediatamente (otimista)
+  document.querySelectorAll(`[data-obra-id="${itemId}"]`).forEach(el => el.classList.toggle('done', novo));
+  _atualizarPillFase('ceu', faseIdx);
+  try {
+    const { error } = await supa
+      .from('obras_status')
+      .upsert({ id: itemId, done: novo, updated_at: new Date().toISOString(), updated_by: currentUser.id });
+    if(error) throw error;
+    showToast(novo ? '✓ Item marcado como concluído' : 'Item desmarcado');
+    // Re-renderiza timeline para refletir mudança de status da fase (concluída/em andamento)
+    // preservando quais fases estavam expandidas
+    _reRenderTimelinePreservandoEstado();
+  } catch(e) {
+    // Reverte em caso de erro
+    obrasStatus[itemId] = !novo;
+    document.querySelectorAll(`[data-obra-id="${itemId}"]`).forEach(el => el.classList.toggle('done', !novo));
+    _atualizarPillFase('ceu', faseIdx);
+    showToast('Erro ao salvar: ' + e.message);
+  }
+}
+
+function _reRenderTimelinePreservandoEstado(){
+  if(currentFazendaHub !== 'ceu') return;
+  // Captura quais fases estão expandidas
+  const expandedIds = [];
+  document.querySelectorAll('#hub-progresso .fase-detail').forEach(d => {
+    if(d.style.display !== 'none' && d.style.display !== '') expandedIds.push(d.id);
+  });
+  // Também pega as que estão sem style.display='none' explícito mas visíveis
+  document.querySelectorAll('#hub-progresso .fase-chevron.open').forEach(c => {
+    const id = 'detail-' + c.id.replace('chev-','');
+    if(!expandedIds.includes(id)) expandedIds.push(id);
+  });
+  renderHubTimeline('ceu');
+  // Restaura expansão
+  expandedIds.forEach(id => {
+    const detail = document.getElementById(id);
+    const chev = document.getElementById('chev-'+id.replace('detail-',''));
+    if(detail) detail.style.display = 'block';
+    if(chev) chev.classList.add('open');
+  });
+}
+
+function _atualizarPillFase(faz, faseIdx){
+  const pill = document.getElementById(`pill-fase-${faz}-${faseIdx}`);
+  if(!pill) return;
+  // Conta itens dessa fase
+  let total = 0, done = 0;
+  Object.keys(obrasStatus).forEach(k => {
+    if(k.startsWith(`${faz}-${faseIdx}-`)){
+      total++;
+      if(obrasStatus[k]) done++;
+    }
+  });
+  // Para o total real, conta também os itens não-status (que ainda estão como false implícito)
+  // Pega do DOM
+  const detail = document.getElementById(`detail-fase-${faz}-${faseIdx}`);
+  if(detail){
+    const items = detail.querySelectorAll('[data-obra-id]');
+    total = items.length;
+    done = Array.from(items).filter(el => el.classList.contains('done')).length;
+  }
+  pill.textContent = `${done} / ${total} itens`;
+  pill.className = 'fase-progress-pill ' + (done===total && total>0 ? 'completo' : (done>0 ? 'has-progress' : ''));
+}
 
 // USERS_LOCAL mantido vazio para compat com código legado que ainda referencia
 const USERS_LOCAL = {};
@@ -4074,6 +4194,8 @@ function entrarNoApp(u){
   document.getElementById('app').style.display     = 'block';
   applyPermissions(u);
   setUser(u);
+  // Carrega status das obras em background
+  carregarObrasStatus().catch(()=>{});
   window.scrollTo({top:0});
   setTimeout(observeAnims, 200);
 }
@@ -4311,6 +4433,10 @@ function hubTab(id, el){
     panel.offsetHeight;
     panel.style.animation='';
   }
+  // Quando admin/acionista abre Progresso na Céu Azul, busca status atualizado
+  if(id === 'progresso' && currentFazendaHub === 'ceu'){
+    carregarObrasStatus().then(()=> renderHubTimeline('ceu')).catch(()=>{});
+  }
 }
 
 // ─── HUB: RENDER SIMULADOR ──────────────────────────────────────────────────
@@ -4366,7 +4492,7 @@ function renderHubSimulador(faz){
         <div class="sim-benchmark">
           <div class="sim-bm-label">Comparativo no prazo</div>
           <div class="sim-bm-bar-wrap">
-            <div class="sim-bm-row"><span class="sim-bm-name">Fazenda S/A</span><div class="sim-bm-bar"><div class="sim-bm-fill sbf-gold" id="${prefix}-bar-faz" style="width:100%"></div></div><span class="sim-bm-val" id="${prefix}-bm-faz">175,5%</span></div>
+            <div class="sim-bm-row"><span class="sim-bm-name">Fazenda Céu Azul S/A</span><div class="sim-bm-bar"><div class="sim-bm-fill sbf-gold" id="${prefix}-bar-faz" style="width:100%"></div></div><span class="sim-bm-val" id="${prefix}-bm-faz">175,5%</span></div>
             <div class="sim-bm-row"><span class="sim-bm-name">CDI 14,5% a.a.</span><div class="sim-bm-bar"><div class="sim-bm-fill sbf-gray" id="${prefix}-bar-cdi"></div></div><span class="sim-bm-val" id="${prefix}-bm-cdi">50,0%</span></div>
             <div class="sim-bm-row"><span class="sim-bm-name">Terra 12,7% a.a.</span><div class="sim-bm-bar"><div class="sim-bm-fill sbf-gray2" id="${prefix}-bar-terra"></div></div><span class="sim-bm-val" id="${prefix}-bm-terra">43,1%</span></div>
           </div>
@@ -4416,9 +4542,7 @@ function renderHubTimeline(faz){
       resumo:'Compra de 4.001 ha — Matrículas 7672, 7673 e 7674',
       itens:[
         'Aquisição do terreno total de 4.001 hectares em Morro Cabeça no Tempo, Piauí',
-        'Registro das três matrículas (7672, 7673 e 7674) junto ao Cartório de Registro de Imóveis',
-        'Contrato de aquisição formalizado entre Fazenda Céu Azul S.A. e LCRP Holding + Thrive Holding',
-        'Área adquirida substancialmente abaixo do valor de mercado regional'
+        'Registro das três matrículas (7672, 7673 e 7674) junto ao Cartório de Registro de Imóveis'
       ]
     },
     {
@@ -4427,19 +4551,19 @@ function renderHubTimeline(faz){
       status:'active',
       resumo:'Construção do complexo operacional e residencial completo',
       itens:[
-        'Pavilhão de armazenagem de máquinas e equipamentos — 1.400 m²',
-        'Pavilhão de armazenagem de produtos químicos, fertilizantes e sementes — 1.000 m²',
-        'Rampa de lavagem de equipamentos conforme projeto',
-        'Tanque de abastecimento de diesel conforme projeto',
-        'Depósito de embalagens químicas vazias — 80 m²',
-        'Reservatório de água potável — 20 m³',
-        'Casa sede — 200 m²',
-        'Casa do gerente — 100 m²',
-        'Casa do caseiro — 100 m²',
-        'Refeitório com equipamentos — 100 m²',
-        'Alojamento com 10 quartos e banheiro — 150 m²',
-        'Estrutura de comunicação e segurança — antena de internet e câmeras',
-        'Ponto de acesso com disponibilidade de energia trifásica'
+        'Construção do pavilhão de armazenagem de máquinas e equipamentos — 1.400 m²',
+        'Construção do pavilhão de armazenagem de produtos químicos, fertilizantes e sementes — 1.000 m²',
+        'Construção da rampa de lavagem de equipamentos conforme projeto',
+        'Construção do tanque de abastecimento de diesel conforme projeto',
+        'Construção do depósito de embalagens químicas vazias — 80 m²',
+        'Construção do reservatório de água potável — 20 m³',
+        'Construção da casa sede — 200 m²',
+        'Construção da casa do gerente — 100 m²',
+        'Construção da casa do caseiro — 100 m²',
+        'Construção do refeitório com equipamentos — 100 m²',
+        'Construção do alojamento com 10 quartos e banheiro — 150 m²',
+        'Instalação da estrutura de comunicação e segurança — antena de internet e câmeras',
+        'Instalação do ponto de acesso com disponibilidade de energia trifásica'
       ]
     },
     {
@@ -4464,9 +4588,7 @@ function renderHubTimeline(faz){
       status:'pending',
       resumo:'Implantação do complexo de armazenagem de grãos',
       itens:[
-        'Silo de armazenagem de grãos conforme projeto',
-        'Secador de grãos com capacidade compatível com a produção',
-        'Classificador e balança de pesagem conforme projeto'
+        'Construção do complexo de armazenagem de grãos — silo, secador com capacidade compatível com a produção, classificador e balança de pesagem (conforme projeto)'
       ]
     },
     {
@@ -4475,10 +4597,30 @@ function renderHubTimeline(faz){
       status:'pending',
       resumo:'11 pivôs centrais sobre o Aquífero Cabeças Gurguéia',
       itens:[
-        'Poços artesianos profundos captando o Aquífero Cabeças Gurguéia — 3ª maior reserva subterrânea do Brasil',
-        '3 lagoas artificiais com geomembrana e instalação completa',
-        '11 pivôs centrais de irrigação — cobrindo os 2.820 ha de área de plantio',
-        'Sistema integrado de irrigação para produção perene independente de chuvas'
+        'Perfuração do poço artesiano 1 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 2 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 3 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 4 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 5 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 6 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 7 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 8 — captação do Aquífero Cabeças Gurguéia',
+        'Perfuração do poço artesiano 9 — captação do Aquífero Cabeças Gurguéia',
+        'Construção da lagoa artificial 1 — com geomembrana e instalação completa',
+        'Construção da lagoa artificial 2 — com geomembrana e instalação completa',
+        'Construção da lagoa artificial 3 — com geomembrana e instalação completa',
+        'Instalação do pivô central 1 — irrigação da área de plantio',
+        'Instalação do pivô central 2 — irrigação da área de plantio',
+        'Instalação do pivô central 3 — irrigação da área de plantio',
+        'Instalação do pivô central 4 — irrigação da área de plantio',
+        'Instalação do pivô central 5 — irrigação da área de plantio',
+        'Instalação do pivô central 6 — irrigação da área de plantio',
+        'Instalação do pivô central 7 — irrigação da área de plantio',
+        'Instalação do pivô central 8 — irrigação da área de plantio',
+        'Instalação do pivô central 9 — irrigação da área de plantio',
+        'Instalação do pivô central 10 — irrigação da área de plantio',
+        'Instalação do pivô central 11 — irrigação da área de plantio',
+        'Integração do sistema completo de irrigação — produção perene independente de chuvas'
       ]
     }
   ];
@@ -4486,25 +4628,45 @@ function renderHubTimeline(faz){
   const statusLabel = {done:'Concluída',active:'Em andamento',pending:'Prevista'};
   const statusColor = {done:'tag-done',active:'tag-active',pending:'tag-pending'};
 
+  // Calcula status efetivo de cada fase (auto-conclui quando todos itens marcados)
+  // Para fases hardcoded como 'done', considera todos itens como done automaticamente
+  const fasesComStatus = fases.map((f,idx) => {
+    const totalItens = f.itens.length;
+    const concluidos = f.itens.filter((_,iIdx) => {
+      if(f.status === 'done') return true;
+      return !!obrasStatus['ceu-'+idx+'-'+iIdx];
+    }).length;
+    const effective = (totalItens > 0 && concluidos === totalItens) ? 'done' : f.status;
+    return { ...f, totalItens, concluidos, effective };
+  });
+  const fasesDone = fasesComStatus.filter(f => f.effective === 'done').length;
+  const fasesPercent = Math.round((fasesDone/fasesComStatus.length)*100);
+
   panel.innerHTML = `
     <div class="tl-progress-pill" style="margin-bottom:32px">
-      <div class="tpp-fill" style="width:20%"></div>
-      <span>Fase I concluída · II em andamento</span>
+      <div class="tpp-fill" style="width:${fasesPercent}%"></div>
+      <span>${fasesDone} / ${fasesComStatus.length} fases concluídas</span>
     </div>
 
     <div class="fase-list">
-      ${fases.map((f,idx) => `
-        <div class="fase-item ${f.status}" id="fase-ceu-${idx}">
+      ${fasesComStatus.map((f,idx) => {
+        const isAdmin = currentUser && currentUser.role === 'admin';
+        const status = f.effective;
+        const totalItens = f.totalItens;
+        const concluidos = f.concluidos;
+        const pillClass = concluidos===totalItens && totalItens>0 ? 'completo' : (concluidos>0 ? 'has-progress' : '');
+        return `
+        <div class="fase-item ${status}" id="fase-ceu-${idx}">
           <div class="fase-header" onclick="toggleFase('fase-ceu-${idx}')">
-            <div class="fase-num-ball ${f.status}">
-              ${f.status==='done'
+            <div class="fase-num-ball ${status}">
+              ${status==='done'
                 ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>'
-                : f.status==='active'
+                : status==='active'
                   ? '<div class="tm-pulse" style="inset:-3px"></div>'
                   : f.num}
             </div>
             <div class="fase-header-content">
-              <div class="fase-label">Fase ${f.num} · <span class="tl-tag ${statusColor[f.status]}" style="padding:1px 6px;font-size:9px">${statusLabel[f.status]}</span></div>
+              <div class="fase-label">Fase ${f.num} · <span class="tl-tag ${statusColor[status]}" style="padding:1px 6px;font-size:9px">${statusLabel[status]}</span><span class="fase-progress-pill ${pillClass}" id="pill-fase-ceu-${idx}">${concluidos} / ${totalItens} itens</span></div>
               <div class="fase-titulo">${f.titulo}</div>
               <div class="fase-resumo">${f.resumo}</div>
             </div>
@@ -4514,11 +4676,22 @@ function renderHubTimeline(faz){
           </div>
           <div class="fase-detail" id="detail-fase-ceu-${idx}" style="display:none">
             <ul class="fase-ul">
-              ${f.itens.map(it=>`<li class="fase-li">${it}</li>`).join('')}
+              ${f.itens.map((it,iIdx) => {
+                const itemId = 'ceu-'+idx+'-'+iIdx;
+                const isHardcodedDone = f.status === 'done';
+                const isDone = isHardcodedDone || !!obrasStatus[itemId];
+                const podeClicar = isAdmin && !isHardcodedDone;
+                return `<li class="fase-li ${isDone?'done':''}" data-obra-id="${itemId}">
+                  <div class="fase-li-check ${podeClicar?'clickable':''}" ${podeClicar?`onclick="event.stopPropagation();toggleObra('${itemId}','${idx}')"`:''}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span class="fase-li-text">${it}</span>
+                </li>`;
+              }).join('')}
             </ul>
           </div>
         </div>
-      `).join('')}
+      `;}).join('')}
     </div>`;
 }
 
@@ -4616,7 +4789,7 @@ function renderHubRetorno(faz){
 function renderHubDocs(faz){
   const panel = document.getElementById('hub-docs');
   const govDocs = [
-    {id:'contrato',nome:'Contrato de Adesão · Fazenda S/A',cat:'Governança · Jan 2026',statusTxt:'Assinado',status:'ok',desc:'Formaliza o investimento e estabelece direitos e deveres do acionista.',paginas:8,tamanho:'1,2 MB',url:null},
+    {id:'contrato',nome:'Contrato de Adesão · Fazenda Céu Azul S/A',cat:'Governança · Jan 2026',statusTxt:'Assinado',status:'ok',desc:'Formaliza o investimento e estabelece direitos e deveres do acionista.',paginas:8,tamanho:'1,2 MB',url:null},
     {id:'ata',nome:'Ata de Assembleia Geral',cat:'Societário · Mar 2026',statusTxt:'Novo',status:'novo',desc:'Deliberações da AGO de Março de 2026.',paginas:12,tamanho:'2,4 MB',url:null},
     {id:'junta',nome:'Registro na Junta Comercial',cat:'Transparência · Mar 2026',statusTxt:'Registrado',status:'ok',desc:'Registro oficial publicado no Diário Oficial.',paginas:4,tamanho:'0,8 MB',url:null}
   ];
@@ -4839,7 +5012,7 @@ function aplicarPermissoesDocumentos(u){
 // ─── ADMIN: DOCUMENTOS ───────────────────────────────────────────────────────
 const TODOS_DOCS = {
   gov: [
-    {id:'contrato',     nome:'Contrato de Adesão · Fazenda S/A',          cat:'Governança · Jan 2026'},
+    {id:'contrato',     nome:'Contrato de Adesão · Fazenda Céu Azul S/A',          cat:'Governança · Jan 2026'},
     {id:'ata',          nome:'Ata de Assembleia Geral Ordinária',           cat:'Societário · Mar 2026'},
     {id:'junta',        nome:'Registro na Junta Comercial',                 cat:'Transparência · Mar 2026'},
     {id:'participacao', nome:'Comprovante de Participação Societária',      cat:'Societário · Fev 2026'}
@@ -4995,14 +5168,10 @@ function renderCotistas(lista){
         </span>
       </td>
       <td>
-        <div class="at-acoes">
-          <button class="at-btn-edit" onclick="editarCotista('${u.id}')" title="Editar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          ${u.role!=='admin'?`<button class="at-btn-del" onclick="toggleCotistaAtivo('${u.id}',${!u.ativo})" title="${u.ativo?'Desativar':'Ativar'}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><circle cx="12" cy="12" r="10"/>${u.ativo?'<line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>':'<polyline points="20 6 9 17 4 12"/>'}</svg>
-          </button>`:''}
-        </div>
+        <a href="https://supabase.com/dashboard/project/nzodyzwupjmurhdprxja/auth/users" target="_blank" rel="noopener" title="Editar no Supabase Dashboard" style="display:inline-flex;align-items:center;gap:5px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);text-decoration:none;padding:6px 10px;border:1px solid var(--line2);border-radius:var(--r-sm);transition:all .2s" onmouseover="this.style.borderColor='var(--gold-border)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--line2)';this.style.color='var(--text3)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Dashboard
+        </a>
       </td>
     </tr>`).join('');
 }
@@ -5098,35 +5267,16 @@ async function salvarCotista(){
   const senha = document.getElementById('mc-senha').value;
   if(senha) payload.password = senha;
 
-  try {
-    if(_editandoId){
-      await apiFetch(`/api/admin/users/${_editandoId}`, { method:'PATCH', body: JSON.stringify(payload) });
-      showToast('✓ Acionista atualizado com sucesso');
-    } else {
-      if(!senha){ throw new Error('Senha é obrigatória para novo acionista.'); }
-      payload.password = senha;
-      await apiFetch('/api/admin/users', { method:'POST', body: JSON.stringify(payload) });
-      showToast('✓ Acionista criado com sucesso');
-    }
-    fecharModalCotista();
-    carregarCotistas();
-    carregarStats();
-  } catch(e){
-    errMsg.textContent = e.message;
-    errEl.style.display = 'flex';
-  } finally {
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg> Salvar acionista';
-    btn.disabled = false;
-  }
+  // Criação/edição de acionistas é feita via Supabase Dashboard (decisão de arquitetura)
+  errMsg.innerHTML = 'Criação e edição de acionistas é feita via <strong>Supabase Dashboard</strong>. <a href="https://supabase.com/dashboard/project/nzodyzwupjmurhdprxja/auth/users" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline">Abrir Dashboard →</a>';
+  errEl.style.display = 'flex';
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg> Salvar acionista';
+  btn.disabled = false;
 }
 
 async function toggleCotistaAtivo(id, novoAtivo){
-  try {
-    await apiFetch(`/api/admin/users/${id}`, { method:'PATCH', body: JSON.stringify({ ativo: novoAtivo }) });
-    showToast(novoAtivo ? '✓ Acionista ativado' : '✓ Acionista desativado');
-    carregarCotistas();
-    carregarStats();
-  } catch(e){ showToast('Erro: '+e.message); }
+  // Toggle de ativo também é manual via Supabase Dashboard
+  showToast('Ativação/desativação de acionistas é feita via Supabase Dashboard');
 }
 
 // ─── LOGS ─────────────────────────────────────────────────────────────────────
@@ -5157,32 +5307,26 @@ async function carregarLogs(){
   }
 }
 
-// ─── STATS ────────────────────────────────────────────────────────────────────
+// ─── STATS (via Supabase) ────────────────────────────────────────────────────
 async function carregarStats(){
+  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
   try {
-    const [users, logs] = await Promise.all([
-      apiFetch('/api/admin/users'),
-      apiFetch('/api/admin/logs')
-    ]);
-    const hoje = new Date().toDateString();
-    const logHoje = logs.filter(l=>new Date(l.createdAt).toDateString()===hoje);
+    const { data: users, error } = await supa
+      .from('perfis')
+      .select('role, fazendas, ativo');
+    if(error) throw error;
 
-    document.getElementById('stat-total').textContent  = users.length;
-    document.getElementById('stat-ativos').textContent = users.filter(u=>u.ativo).length;
-    document.getElementById('stat-aguia').textContent  = users.filter(u=>u.fazendas.includes('aguia')).length;
-    document.getElementById('stat-ceu').textContent    = users.filter(u=>u.fazendas.includes('ceu')).length;
-    document.getElementById('stat-logins').textContent = logHoje.filter(l=>l.action==='login_ok').length;
-    document.getElementById('stat-falhas').textContent = logHoje.filter(l=>l.action==='login_fail').length;
-  } catch {
-    // Backend não disponível — exibe dados locais
-    const users = Object.values(USERS_LOCAL);
-    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
-    set('stat-total',  users.length);
-    set('stat-ativos', users.length);
-    set('stat-aguia',  users.filter(u=>Array.isArray(u.fazendas)&&u.fazendas.includes('aguia')).length);
-    set('stat-ceu',    users.filter(u=>Array.isArray(u.fazendas)&&u.fazendas.includes('ceu')).length);
+    const lista = users || [];
+    set('stat-total',  lista.length);
+    set('stat-ativos', lista.filter(u => u.ativo !== false).length);
+    set('stat-aguia',  lista.filter(u => u.role==='admin' || (Array.isArray(u.fazendas) && u.fazendas.includes('aguia'))).length);
+    set('stat-ceu',    lista.filter(u => u.role==='admin' || (Array.isArray(u.fazendas) && u.fazendas.includes('ceu'))).length);
+    // Logins/falhas precisam de tabela própria — exibe placeholder por enquanto
     set('stat-logins', '—');
     set('stat-falhas', '—');
+  } catch(e) {
+    console.error('Erro carregando stats:', e);
+    ['stat-total','stat-ativos','stat-aguia','stat-ceu','stat-logins','stat-falhas'].forEach(id => set(id, '—'));
   }
 }
 
@@ -5214,6 +5358,19 @@ function driveParaEmbed(url){
   return `https://drive.google.com/file/d/${id}/preview`;
 }
 
+function driveParaDownload(url){
+  if(!url) return null;
+  let id = null;
+  const m1 = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  const m2 = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if(m1) id = m1[1];
+  else if(m2) id = m2[1];
+  if(!id) return url; // URL direta, usa como link de download
+  return `https://drive.google.com/uc?export=download&id=${id}`;
+}
+
+let _downloadUrlAtual = null;
+
 function abrirDoc(doc){
   _docAtual = doc;
   document.getElementById('dd-cat').textContent    = doc.cat;
@@ -5224,13 +5381,16 @@ function abrirDoc(doc){
   document.getElementById('dd-desc').textContent   = doc.desc;
   document.getElementById('dd-placeholder-nome').textContent = doc.nome;
 
-  const iframe      = document.getElementById('dd-iframe');
-  const placeholder = document.getElementById('dd-placeholder');
-  const btnAbrir    = document.getElementById('dd-btn-abrir');
+  const iframe       = document.getElementById('dd-iframe');
+  const placeholder  = document.getElementById('dd-placeholder');
+  const btnAbrir     = document.getElementById('dd-btn-abrir');
+  const btnDownload  = document.getElementById('dd-btn-download');
+  const btnSolicitar = document.getElementById('dd-btn-solicitar');
 
   // Pega a URL salva localmente (admin pode ter adicionado)
   const urlSalva = docUrls[doc.id] || doc.url;
   const embedUrl = driveParaEmbed(urlSalva);
+  _downloadUrlAtual = driveParaDownload(urlSalva);
 
   if(embedUrl){
     iframe.src = embedUrl;
@@ -5240,16 +5400,40 @@ function abrirDoc(doc){
       btnAbrir.style.display = 'inline-flex';
       btnAbrir.onclick = ()=> window.open(urlSalva, '_blank');
     }
+    if(btnDownload) btnDownload.style.display = 'inline-flex';
+    if(btnSolicitar) btnSolicitar.style.display = 'none';
   } else {
     iframe.style.display = 'none';
     iframe.src = '';
     placeholder.style.display = 'flex';
     if(btnAbrir) btnAbrir.style.display = 'none';
+    if(btnDownload) btnDownload.style.display = 'none';
+    if(btnSolicitar) btnSolicitar.style.display = 'inline-flex';
   }
 
   document.getElementById('doc-overlay').classList.add('open');
   document.getElementById('doc-drawer').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function baixarDoc(){
+  if(!_downloadUrlAtual){
+    showToast('Link de download indisponível para este documento.');
+    return;
+  }
+  // Cria um link temporário e dispara o download
+  const a = document.createElement('a');
+  a.href = _downloadUrlAtual;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  // Sugere nome do arquivo (Drive ignora se for de outra origem, mas mantém para casos diretos)
+  if(_docAtual && _docAtual.nome){
+    a.download = _docAtual.nome.replace(/[\\/:*?"<>|]/g,'-') + '.pdf';
+  }
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('✓ Iniciando download...');
 }
 
 function fecharDoc(){
