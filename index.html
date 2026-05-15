@@ -1370,6 +1370,114 @@ body.light-mode .hi-val{color:rgba(14,26,14,0.85)!important}
   .hh-val{font-size:36px}
 }
 
+/* ===================== GALERIA / TIMELINE ===================== */
+.gal-empty{padding:80px 24px;text-align:center;color:var(--text2);font-size:13px;line-height:1.8}
+.gal-empty svg{display:block;margin:0 auto 18px;color:var(--text3);opacity:.6}
+.gal-empty strong{color:var(--text);font-weight:500;display:block;margin-bottom:6px;font-size:14px}
+
+.gal-wrap{position:relative;padding:8px 0 24px;max-width:920px;margin:0 auto}
+.gal-line{position:absolute;left:24px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent 0%,var(--gold-border) 6%,var(--gold-border) 94%,transparent 100%)}
+
+.gal-marco{position:relative;padding:0 0 40px 64px;animation:hubPanelIn .5s ease both}
+.gal-marco:last-child{padding-bottom:8px}
+.gal-marco::before{
+  content:"";position:absolute;left:18px;top:6px;width:14px;height:14px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 4px var(--ink),0 0 0 5px var(--gold-border);
+  z-index:2;
+}
+
+.gal-data{
+  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
+  font-weight:500;margin-bottom:8px
+}
+.gal-titulo{
+  font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--text);
+  line-height:1.25;margin-bottom:10px;letter-spacing:.2px
+}
+.gal-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;max-width:680px}
+
+.gal-foto{
+  display:block;width:100%;max-width:680px;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line2);background:var(--surf2);cursor:zoom-in;
+  transition:transform .25s ease,border-color .25s ease;
+}
+.gal-foto:hover{transform:translateY(-2px);border-color:var(--gold-border)}
+.gal-foto img{display:block;width:100%;height:auto;max-height:480px;object-fit:cover}
+
+/* LIGHTBOX */
+.gal-lb{
+  position:fixed;inset:0;background:rgba(8,12,8,.94);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:32px;
+  backdrop-filter:blur(8px);animation:gallbIn .25s ease;
+}
+.gal-lb.active{display:flex}
+@keyframes gallbIn{from{opacity:0}to{opacity:1}}
+.gal-lb-img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.gal-lb-close{
+  position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .2s ease;
+}
+.gal-lb-close:hover{background:rgba(255,255,255,.16)}
+.gal-lb-cap{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.85);font-size:13px;text-align:center;max-width:80vw;
+  background:rgba(0,0,0,.5);padding:10px 18px;border-radius:50px;
+}
+
+/* MOBILE GALERIA */
+@media(max-width:767px){
+  .gal-wrap{padding:4px 0 16px}
+  .gal-line{left:14px}
+  .gal-marco{padding:0 0 32px 40px}
+  .gal-marco::before{left:8px;width:12px;height:12px}
+  .gal-titulo{font-size:20px}
+  .gal-foto img{max-height:280px}
+}
+
+/* ===================== ADMIN GALERIA ===================== */
+.adm-gal-form{background:var(--surf2);border:1px solid var(--line2);border-radius:var(--r-lg);padding:24px;margin-bottom:24px}
+.adm-gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-gal-grid .mk-field{margin:0}
+.adm-gal-full{grid-column:1/-1}
+.adm-gal-drop{
+  border:2px dashed var(--gold-border);border-radius:var(--r-lg);padding:32px;
+  text-align:center;cursor:pointer;background:rgba(184,147,58,.04);
+  transition:background .2s ease,border-color .2s ease;
+}
+.adm-gal-drop:hover{background:rgba(184,147,58,.08);border-color:var(--gold)}
+.adm-gal-drop.has-file{padding:14px;text-align:left;display:flex;align-items:center;gap:14px}
+.adm-gal-drop input{display:none}
+.adm-gal-drop-thumb{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--surf3)}
+.adm-gal-drop-info{flex:1;min-width:0;font-size:12px;color:var(--text2)}
+.adm-gal-drop-info strong{display:block;color:var(--text);font-size:13px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.adm-gal-list{display:flex;flex-direction:column;gap:10px}
+.adm-gal-item{
+  display:flex;gap:14px;background:var(--surf2);border:1px solid var(--line2);
+  border-radius:var(--r-lg);padding:12px;align-items:center;
+}
+.adm-gal-item-thumb{width:80px;height:60px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--surf3)}
+.adm-gal-item-body{flex:1;min-width:0}
+.adm-gal-item-meta{font-size:11px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.adm-gal-item-title{font-size:14px;color:var(--text);font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-gal-item-desc{font-size:12px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.adm-gal-item-actions{display:flex;gap:6px;flex-shrink:0}
+.adm-gal-item-btn{
+  background:transparent;border:1px solid var(--line2);color:var(--text2);
+  width:32px;height:32px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;
+}
+.adm-gal-item-btn:hover{border-color:var(--gold-border);color:var(--gold)}
+.adm-gal-item-btn.danger:hover{border-color:#c75a4a;color:#c75a4a}
+
+@media(max-width:767px){
+  .adm-gal-grid{grid-template-columns:1fr}
+  .adm-gal-item{flex-wrap:wrap}
+  .adm-gal-item-thumb{width:100%;height:140px}
+}
+
 /* ===================== SIMULADOR ===================== */
 .sim-faz-toggle{display:flex;gap:4px;background:var(--surf2);border-radius:50px;padding:4px;width:fit-content;margin:0 60px 32px}
 .sft-btn{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:none;background:none;padding:10px 24px;border-radius:50px;cursor:pointer;color:var(--text3);transition:all .2s}
@@ -3244,6 +3352,10 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="17 7 12 2 7 7"/><polyline points="7 17 12 22 17 17"/></svg>
           <span>Progresso</span>
         </button>
+        <button class="hub-tab" onclick="hubTab('galeria',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Galeria</span>
+        </button>
         <button class="hub-tab" onclick="hubTab('retorno',this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <span>Retorno</span>
@@ -3270,6 +3382,9 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
         <!-- TAB: PROGRESSO -->
         <div class="hub-panel" id="hub-progresso"></div>
+
+        <!-- TAB: GALERIA -->
+        <div class="hub-panel" id="hub-galeria"></div>
 
         <!-- TAB: RETORNO -->
         <div class="hub-panel" id="hub-retorno"></div>
@@ -3676,6 +3791,10 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Conteúdo
       </button>
+      <button class="admin-tab" onclick="adminTab('galeria-admin',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Galeria
+      </button>
       <button class="admin-tab" onclick="adminTab('logs',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         Log de acessos
@@ -3792,6 +3911,69 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           </button>
           <span style="font-size:11px;color:var(--text3);font-style:italic" id="cfg-evt-status"></span>
         </div>
+      </div>
+    </div>
+
+    <!-- TAB: GALERIA -->
+    <div class="admin-panel" id="admin-galeria-admin">
+      <div class="admin-doc-intro" style="margin-bottom:24px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" style="color:var(--gold);flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div style="font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px">Galeria · Linha do tempo das fazendas</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.7">Cada marco aparece na aba Galeria do hub da fazenda escolhida, ordenado da data mais recente para a mais antiga.</div>
+        </div>
+      </div>
+
+      <div class="adm-gal-form">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Novo marco</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--text);margin-bottom:20px">Adicionar registro à galeria</div>
+
+        <label class="adm-gal-drop" id="gal-drop">
+          <input type="file" id="gal-foto" accept="image/*" onchange="onGalFotoChange(event)">
+          <div id="gal-drop-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" style="color:var(--gold);margin-bottom:10px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div style="font-size:13px;color:var(--text);margin-bottom:4px">Clique para enviar uma foto</div>
+            <div style="font-size:11px;color:var(--text3)">PNG ou JPG · até ~5 MB recomendado</div>
+          </div>
+        </label>
+
+        <div class="adm-gal-grid" style="margin-top:18px">
+          <div class="mk-field">
+            <label class="mk-label">Fazenda</label>
+            <select class="mk-input" id="gal-fazenda">
+              <option value="ceu">Céu Azul</option>
+              <option value="aguia">Águia Dourada</option>
+            </select>
+          </div>
+          <div class="mk-field">
+            <label class="mk-label">Data do marco</label>
+            <input class="mk-input" type="date" id="gal-data">
+          </div>
+          <div class="mk-field adm-gal-full">
+            <label class="mk-label">Título</label>
+            <input class="mk-input" type="text" id="gal-titulo" placeholder="Ex: Aquisição da Fazenda Céu Azul">
+          </div>
+          <div class="mk-field adm-gal-full">
+            <label class="mk-label">Descrição (opcional)</label>
+            <textarea class="mk-input" id="gal-desc" rows="3" placeholder="Detalhes sobre este marco — contexto, números, próximos passos..."></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;align-items:center">
+          <button class="mk-btn-submit" onclick="salvarMarcoGaleria()" id="gal-save-btn" style="background:var(--gold);color:var(--ink)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Adicionar marco</span>
+          </button>
+          <button class="mk-btn-submit" onclick="resetGalForm()" style="background:transparent;color:var(--text2);border:1px solid var(--line2)">
+            Limpar
+          </button>
+          <span style="font-size:11px;color:var(--text3);font-style:italic" id="gal-status"></span>
+        </div>
+      </div>
+
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin:8px 0 12px">Marcos cadastrados</div>
+      <div class="adm-gal-list" id="adm-gal-list">
+        <div class="admin-loading" style="padding:24px;text-align:center;color:var(--text3);font-size:13px">Carregando marcos...</div>
       </div>
     </div>
 
@@ -4462,7 +4644,110 @@ function hubTab(id, el){
   if(id === 'progresso' && currentFazendaHub === 'ceu'){
     carregarObrasStatus().then(()=> renderHubTimeline('ceu')).catch(()=>{});
   }
+  // Galeria: carrega/atualiza marcos da fazenda atual
+  if(id === 'galeria' && currentFazendaHub){
+    renderHubGaleria(currentFazendaHub);
+  }
 }
+
+// ─── HUB: GALERIA / TIMELINE ────────────────────────────────────────────────
+let _galeriaCache = null;
+
+async function carregarGaleria(){
+  try{
+    const { data, error } = await supa.from('galeria_marcos')
+      .select('*')
+      .order('data', { ascending: false })
+      .order('ordem', { ascending: true });
+    if(error){ console.warn('galeria_marcos indisponível:', error.message); _galeriaCache = []; return []; }
+    _galeriaCache = data || [];
+    return _galeriaCache;
+  }catch(e){ console.warn('galeria erro:', e); _galeriaCache = []; return []; }
+}
+
+function fmtDataMarco(s){
+  if(!s) return '';
+  // s no formato YYYY-MM-DD
+  const [y,m,d] = s.split('-');
+  const meses = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+  if(!d) return `${meses[parseInt(m,10)-1]||''} ${y}`;
+  return `${d} · ${meses[parseInt(m,10)-1]||''} ${y}`;
+}
+
+async function assinarUrlGaleria(path){
+  if(!path) return '';
+  try {
+    const { data, error } = await supa.storage.from('galeria').createSignedUrl(path, 3600);
+    if(error){ console.warn('signed url:', error.message); return ''; }
+    return data.signedUrl;
+  } catch(e){ console.warn(e); return ''; }
+}
+
+async function renderHubGaleria(faz){
+  const panel = document.getElementById('hub-galeria');
+  if(!panel) return;
+  panel.innerHTML = `<div class="gal-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="40" height="40"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Carregando galeria...</div>`;
+  const marcos = await carregarGaleria();
+  const meus = marcos.filter(m => m.fazenda === faz);
+  if(meus.length === 0){
+    panel.innerHTML = `
+      <div class="gal-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="56" height="56"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <strong>Galeria em construção</strong>
+        Em breve, registros visuais da evolução da fazenda aparecerão aqui — desde a aquisição até a operação plena.
+      </div>`;
+    return;
+  }
+  // Gera URLs assinadas em paralelo
+  const comUrl = await Promise.all(meus.map(async m => ({ ...m, _url: await assinarUrlGaleria(m.foto_url) })));
+  const html = `
+    <div class="gal-wrap">
+      <div class="gal-line"></div>
+      ${comUrl.map(m => `
+        <div class="gal-marco">
+          <div class="gal-data">${fmtDataMarco(m.data)}</div>
+          <div class="gal-titulo">${escHtml(m.titulo||'')}</div>
+          ${m.descricao ? `<div class="gal-desc">${escHtml(m.descricao)}</div>` : ''}
+          ${m._url ? `
+            <div class="gal-foto" onclick="abrirLightbox('${escAttr(m._url)}','${escAttr(m.titulo||'')}')">
+              <img src="${escAttr(m._url)}" alt="${escAttr(m.titulo||'')}" loading="lazy">
+            </div>` : ''}
+        </div>
+      `).join('')}
+    </div>`;
+  panel.innerHTML = html;
+}
+
+function escHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escAttr(s){ return String(s).replace(/"/g,'&quot;').replace(/'/g,"&#39;"); }
+
+function abrirLightbox(url, cap){
+  let lb = document.getElementById('gal-lightbox');
+  if(!lb){
+    lb = document.createElement('div');
+    lb.id = 'gal-lightbox';
+    lb.className = 'gal-lb';
+    lb.innerHTML = `
+      <button class="gal-lb-close" onclick="fecharLightbox()" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <img class="gal-lb-img" alt="">
+      <div class="gal-lb-cap"></div>`;
+    lb.addEventListener('click', e => { if(e.target === lb) fecharLightbox(); });
+    document.body.appendChild(lb);
+  }
+  lb.querySelector('.gal-lb-img').src = url;
+  lb.querySelector('.gal-lb-img').alt = cap;
+  lb.querySelector('.gal-lb-cap').textContent = cap;
+  lb.querySelector('.gal-lb-cap').style.display = cap ? '' : 'none';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function fecharLightbox(){
+  const lb = document.getElementById('gal-lightbox');
+  if(lb){ lb.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') fecharLightbox(); });
 
 // ─── HUB: RENDER SIMULADOR ──────────────────────────────────────────────────
 function renderHubSimulador(faz){
@@ -5134,6 +5419,128 @@ function adminTab(id, el){
   if(id==='stats')             carregarStats();
   if(id==='documentos-admin')  renderAdminDocs();
   if(id==='conteudo')          carregarFormProximoEvento();
+  if(id==='galeria-admin')     carregarMarcosAdmin();
+}
+
+// ─── ADMIN · GALERIA ──────────────────────────────────────────────────────────
+let _galFotoFile = null;
+
+function onGalFotoChange(ev){
+  const f = ev.target.files && ev.target.files[0];
+  if(!f) return;
+  _galFotoFile = f;
+  const drop = document.getElementById('gal-drop');
+  const url = URL.createObjectURL(f);
+  drop.classList.add('has-file');
+  drop.querySelector('#gal-drop-empty')?.remove();
+  drop.insertAdjacentHTML('beforeend', `
+    <img src="${url}" class="adm-gal-drop-thumb" id="gal-drop-thumb">
+    <div class="adm-gal-drop-info">
+      <strong>${escHtml(f.name)}</strong>
+      ${(f.size/1024).toFixed(0)} KB · clique para trocar
+    </div>
+  `);
+}
+
+function resetGalForm(){
+  _galFotoFile = null;
+  ['gal-titulo','gal-desc','gal-data'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  const inp = document.getElementById('gal-foto'); if(inp) inp.value='';
+  const drop = document.getElementById('gal-drop');
+  drop.classList.remove('has-file');
+  drop.innerHTML = `
+    <input type="file" id="gal-foto" accept="image/*" onchange="onGalFotoChange(event)">
+    <div id="gal-drop-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" style="color:var(--gold);margin-bottom:10px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <div style="font-size:13px;color:var(--text);margin-bottom:4px">Clique para enviar uma foto</div>
+      <div style="font-size:11px;color:var(--text3)">PNG ou JPG · até ~5 MB recomendado</div>
+    </div>`;
+  document.getElementById('gal-status').textContent = '';
+}
+
+async function salvarMarcoGaleria(){
+  const fazenda = document.getElementById('gal-fazenda').value;
+  const data    = document.getElementById('gal-data').value;
+  const titulo  = document.getElementById('gal-titulo').value.trim();
+  const desc    = document.getElementById('gal-desc').value.trim();
+  const status  = document.getElementById('gal-status');
+  const btn     = document.getElementById('gal-save-btn');
+
+  if(!data || !titulo){ status.textContent = 'Preencha pelo menos data e título.'; status.style.color='#c75a4a'; return; }
+  if(!_galFotoFile){    status.textContent = 'Selecione uma foto antes de salvar.'; status.style.color='#c75a4a'; return; }
+
+  btn.disabled = true; btn.querySelector('span').textContent = 'Enviando...';
+  status.style.color = 'var(--text3)'; status.textContent = 'Enviando foto...';
+
+  try {
+    const ext  = (_galFotoFile.name.split('.').pop()||'jpg').toLowerCase();
+    const path = `${fazenda}/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+    const up = await supa.storage.from('galeria').upload(path, _galFotoFile, { upsert:false, contentType:_galFotoFile.type });
+    if(up.error) throw up.error;
+
+    status.textContent = 'Salvando registro...';
+    // Salva apenas o path do storage (bucket privado, URL assinada gerada no render)
+    const ins = await supa.from('galeria_marcos').insert({
+      fazenda, data, titulo, descricao: desc || null, foto_url: path, ordem: 0
+    });
+    if(ins.error) throw ins.error;
+
+    status.style.color = 'var(--gold)'; status.textContent = 'Marco adicionado.';
+    _galeriaCache = null;
+    resetGalForm();
+    carregarMarcosAdmin();
+  } catch(e) {
+    console.error(e);
+    status.style.color = '#c75a4a'; status.textContent = 'Erro: ' + (e.message||'falha ao salvar');
+  } finally {
+    btn.disabled = false; btn.querySelector('span').textContent = 'Adicionar marco';
+  }
+}
+
+async function carregarMarcosAdmin(){
+  const wrap = document.getElementById('adm-gal-list');
+  if(!wrap) return;
+  const { data, error } = await supa.from('galeria_marcos')
+    .select('*').order('data', { ascending:false }).order('ordem', { ascending:true });
+  if(error){
+    wrap.innerHTML = `<div style="padding:24px;text-align:center;color:#c75a4a;font-size:13px">Não foi possível carregar (${escHtml(error.message)}). Verifique se a tabela <code>galeria_marcos</code> existe no Supabase.</div>`;
+    return;
+  }
+  if(!data || data.length === 0){
+    wrap.innerHTML = `<div style="padding:24px;text-align:center;color:var(--text3);font-size:13px">Nenhum marco cadastrado ainda.</div>`;
+    return;
+  }
+  // Gera URLs assinadas em paralelo pros thumbs
+  const comUrl = await Promise.all(data.map(async m => ({ ...m, _url: await assinarUrlGaleria(m.foto_url) })));
+  wrap.innerHTML = comUrl.map(m => `
+    <div class="adm-gal-item">
+      <img class="adm-gal-item-thumb" src="${escAttr(m._url||'')}" alt="" onerror="this.style.background='var(--surf3)';this.removeAttribute('src')">
+      <div class="adm-gal-item-body">
+        <div class="adm-gal-item-meta">${m.fazenda==='aguia'?'Águia Dourada':'Céu Azul'} · ${fmtDataMarco(m.data)}</div>
+        <div class="adm-gal-item-title">${escHtml(m.titulo||'')}</div>
+        ${m.descricao ? `<div class="adm-gal-item-desc">${escHtml(m.descricao)}</div>` : ''}
+      </div>
+      <div class="adm-gal-item-actions">
+        <button class="adm-gal-item-btn danger" title="Excluir" onclick="excluirMarcoGaleria('${m.id}','${escAttr(m.foto_url||'')}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function excluirMarcoGaleria(id, path){
+  if(!confirm('Excluir este marco da galeria? Esta ação não pode ser desfeita.')) return;
+  try {
+    const del = await supa.from('galeria_marcos').delete().eq('id', id);
+    if(del.error) throw del.error;
+    // Best-effort: apaga o arquivo do Storage (path direto agora)
+    if(path) await supa.storage.from('galeria').remove([path]).catch(()=>{});
+    _galeriaCache = null;
+    carregarMarcosAdmin();
+  } catch(e){
+    alert('Erro ao excluir: ' + (e.message||e));
+  }
 }
 
 // ─── CONFIG · PRÓXIMO EVENTO ──────────────────────────────────────────────────
