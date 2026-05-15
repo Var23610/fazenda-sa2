@@ -408,7 +408,7 @@ body.light-mode .lm-logo{color:rgba(14,26,14,0.88)!important}
 
 .hero-right{
   width:480px;display:flex;flex-direction:column;padding:80px 60px;
-  justify-content:space-between;
+  justify-content:flex-start;gap:32px;
 }
 .hr-top{}
 .stat-row{
@@ -1249,6 +1249,8 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
 .hub-icon span{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)}
 .hub-icon.hi-aguia{background:linear-gradient(145deg,#2a4a2a,#0e1a0e);box-shadow:inset 0 1px 0 rgba(255,255,255,0.07)}
 .hub-icon.hi-ceu{background:linear-gradient(145deg,#1e3a5a,#0a1220);box-shadow:inset 0 1px 0 rgba(255,255,255,0.07)}
+.hub-icon.hub-icon-logo{background:#fff;overflow:hidden;padding:0}
+.hub-icon.hub-icon-logo img{width:100%;height:100%;object-fit:contain}
 
 .hub-info{flex:1;min-width:0}
 .hub-proj{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
@@ -1319,23 +1321,23 @@ body.light-mode .mc-faz-label{background:var(--surf3)!important;border-color:rgb
   font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
 }
 .hi-row{
-  display:flex;align-items:center;gap:12px;
-  padding:11px 18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:24px;
+  padding:14px 22px;border-bottom:1px solid var(--line);
   transition:background .15s;
 }
 .hi-row:last-child{border-bottom:none}
 .hi-row:hover{background:var(--surf3)}
-.hi-ico{
-  width:30px;height:30px;border-radius:8px;
-  background:var(--gold-faint);border:1px solid var(--gold-border);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:13px;
-}
 .hi-key{
-  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--text3);width:140px;flex-shrink:0;
+  font-size:11px;letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--text3);width:180px;flex-shrink:0;font-weight:400;
 }
-.hi-val{font-size:13px;color:var(--text);flex:1;line-height:1.4}
+.hi-val{font-size:13px;color:var(--text);flex:1;line-height:1.4;font-variant-numeric:tabular-nums}
+
+/* Distâncias estratégicas — layout institucional */
+.hi-row-dist .hi-val{display:flex;align-items:baseline;gap:10px}
+.hi-dist-km{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:300;letter-spacing:-0.3px;min-width:70px}
+.hi-dist-sep{color:var(--text3);font-size:11px}
+.hi-dist-tipo{font-size:12px;color:var(--text2);letter-spacing:0.2px}
 
 /* light mode */
 body.light-mode .hi-card{background:var(--surf2)!important;border-color:rgba(14,26,14,0.10)!important}
@@ -2309,7 +2311,16 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 }
 
 .faz-icon-img{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.faz-icon-img img{width:80px;height:80px;object-fit:contain;border-radius:12px}
+.faz-icon-img img{width:140px;height:140px;object-fit:contain;border-radius:30px}
+
+/* Quando há logo, remove o background gradient da shell pra logo respirar */
+.faz-icon-shell.faz-shell-logo{
+  background:#fff!important;
+  padding:0;overflow:hidden;
+}
+.faz-icon-shell.faz-shell-logo .faz-icon-img img{
+  width:100%;height:100%;border-radius:0;
+}
 .faz-initials{
   font-family:'Cormorant Garamond',serif;
   font-size:56px;font-weight:300;color:var(--gold);
@@ -2725,11 +2736,6 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       </div>
       <div class="lhc-stats">
         <div class="lhc-stat">
-          <div class="lhcs-val">+28,4%</div>
-          <div class="lhcs-lbl">Valorização terras 2024</div>
-        </div>
-        <div class="lhc-stat-sep"></div>
-        <div class="lhc-stat">
           <div class="lhcs-val">R$ 1,8 bi</div>
           <div class="lhcs-lbl">M&A agrícola em 2025</div>
         </div>
@@ -2748,15 +2754,7 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="ls-eyebrow">A Oportunidade</div>
       <h2 class="ls-title">Por que terra agrícola, por que agora.</h2>
       <p class="ls-sub">O agronegócio responde por ~25% do PIB brasileiro. O investidor que entra pela porta da terra captura valorização, renda de arrendamento e ganho imobiliário — simultaneamente.</p>
-      <div class="land-facts">
-        <div class="lf-card">
-          <div class="lf-val">+28,4%</div>
-          <div class="lf-desc">de alta no valor médio das terras rurais, por hectare, no Brasil em 2024.</div>
-        </div>
-        <div class="lf-card">
-          <div class="lf-val">R$ 1,8 bi</div>
-          <div class="lf-desc">Negócio Bom Futuro × Proterra em 2025 — 40.000 ha adquiridos.</div>
-        </div>
+      <div class="land-facts" style="grid-template-columns:1fr;max-width:560px">
         <div class="lf-card">
           <div class="lf-val">Ativo real</div>
           <div class="lf-desc">Garantia imobiliária e registro em Junta Comercial. Você investe em terra, não em papel.</div>
@@ -2770,11 +2768,11 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     <div class="ls-inner">
       <div class="ls-eyebrow">Portfólio · 2 Projetos</div>
       <h2 class="ls-title">Dois projetos. Um ciclo claro de geração de valor.</h2>
-      <p class="ls-sub">Cada fazenda passa por quatro etapas: captação, aquisição abaixo do mercado, transformação produtiva e saída via arrendamento ou venda.</p>
+      <p class="ls-sub">Cada fazenda passa por quatro etapas: captação, transformação da infraestrutura produtiva, arrendamento e saída.</p>
       <div class="land-proj-row">
         <div class="lp-card">
-          <div class="lp-icon fi-aguia" style="width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
-            <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">AD</span>
+          <div class="lp-icon" style="width:80px;height:80px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden">
+            <img src="assets/aguia-dourada.png" alt="Águia Dourada" style="width:100%;height:100%;object-fit:contain" onerror="this.outerHTML='<span style=&quot;font-family:Cormorant Garamond,serif;font-size:28px;color:var(--gold)&quot;>AD</span>'">
           </div>
           <div class="lp-proj">Projeto I</div>
           <div class="lp-name">Fazenda Águia Dourada</div>
@@ -2786,14 +2784,15 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="lp-status lps-op"><div class="dot"></div>Operando</div>
         </div>
         <div class="lp-card">
-          <div class="lp-icon fi-ceu" style="width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
-            <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)">CA</span>
+          <div class="lp-icon" style="width:80px;height:80px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden">
+            <img src="assets/ceu-azul.png" alt="Céu Azul" style="width:100%;height:100%;object-fit:contain" onerror="this.outerHTML='<span style=&quot;font-family:Cormorant Garamond,serif;font-size:28px;color:var(--gold)&quot;>CA</span>'">
           </div>
           <div class="lp-proj">Projeto II</div>
           <div class="lp-name">Fazenda Céu Azul</div>
           <div class="lp-loc">Morro Cabeça no Tempo · Piauí</div>
           <div class="lp-stats">
             <div><span class="lps-val">4.001 ha</span><span class="lps-lbl">Área total</span></div>
+            <div><span class="lps-val">2.820 ha</span><span class="lps-lbl">Plantio</span></div>
             <div><span class="lps-val">11 pivôs</span><span class="lps-lbl">Irrigação</span></div>
           </div>
           <div class="lp-status lps-gf"><div class="dot"></div>Greenfield irrigado</div>
@@ -2810,9 +2809,9 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <h2 class="ls-title">Retorno acima dos principais referenciais.</h2>
       <div class="land-bench">
         <div class="lb-row">
-          <span class="lb-name">Fazenda Céu Azul S/A (3 anos)</span>
+          <span class="lb-name">Fazenda Céu Azul S/A · cenário de venda em 3 anos</span>
           <div class="lb-bar"><div class="lb-fill lbf-gold" style="width:100%"></div></div>
-          <span class="lb-val lb-gold">277% do CDI</span>
+          <span class="lb-val lb-gold">277% a 446% do CDI</span>
         </div>
         <div class="lb-row">
           <span class="lb-name">CDI 14,5% a.a.</span>
@@ -3010,13 +3009,6 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <div class="hero-right">
           <div class="hr-top">
             <div class="stat-row">
-              <div class="sr-label">TIR Estimada · Anual</div>
-              <div class="sr-value gold">40,19%</div>
-              <div class="sr-compare">
-                vs. CDI <span class="vs">14,50% · referência histórica</span>
-              </div>
-            </div>
-            <div class="stat-row">
               <div class="sr-label">Retorno estimado por ação</div>
               <div class="sr-value">R$ 87.773</div>
               <div class="sr-note">Estimativa ilustrativa · saída em 3 a 5 anos · sujeita a variações</div>
@@ -3025,11 +3017,6 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
               <div class="sr-label">Projetos no portfólio</div>
               <div class="sr-value">2 ativos</div>
               <div class="sr-note">Águia Dourada (operando) · Céu Azul (implantação)</div>
-            </div>
-            <div class="stat-row">
-              <div class="sr-label">Valorização das terras · 2024</div>
-              <div class="sr-value gold">+28,4%</div>
-              <div class="sr-note">Alta média por hectare no Brasil · vs. 2022 · fonte: FNP/Informa</div>
             </div>
           </div>
           <div class="hr-bottom">
@@ -3076,31 +3063,6 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
     </div>
 
     <!-- NARRATIVA Águia -->
-    <div class="narrative anim">
-      <div class="narr-text">
-        <div class="narr-chapter">Projeto I · Em operação</div>
-        <div class="narr-headline">Fazenda Águia Dourada está produzindo e em negociação</div>
-        <div class="narr-body">Adquirida por R$ 16,1 milhões e completamente transformada — 650 ha plantados com soja, pavilhão de 1.400 m², solo preparado e licenças em dia. A fazenda está em negociação ativa por R$ 55 milhões, representando uma valorização de 240% sobre o capital investido.</div>
-        <div class="narr-fact">
-          <div class="nf-item"><div class="nf-val">1.349 ha</div><div class="nf-label">Área total · TO</div></div>
-          <div class="nf-item"><div class="nf-val">R$ 55mi</div><div class="nf-label">Valor negociação</div></div>
-          <div class="nf-item"><div class="nf-val">40,69%</div><div class="nf-label">TIR a.a. · 3 anos</div></div>
-        </div>
-      </div>
-      <div class="narr-visual">
-        <div class="nv-card">
-          <div class="nv-card-title">Retorno do Investimento</div>
-          <div class="data-row"><span class="dr-key">Custo total</span><span class="dr-val">R$ 16.158.440</span></div>
-          <div class="data-row"><span class="dr-key">Venda projetada</span><span class="dr-val gold">R$ 55.000.000</span></div>
-          <div class="data-row"><span class="dr-key">TIR/ano (3a)</span><span class="dr-val up">40,69% a.a.</span></div>
-          <div class="data-row"><span class="dr-key">TIR/ano (5a)</span><span class="dr-val up">25,35% a.a.</span></div>
-          <div class="data-row"><span class="dr-key">TIR/ano (7a)</span><span class="dr-val up">19,12% a.a.</span></div>
-          <div class="data-row"><span class="dr-key">Status</span><span class="dr-val"><span class="dr-badge">Operando</span></span></div>
-        </div>
-      </div>
-    </div>
-
-
     <!-- BENCHMARKS -->
     <div class="bench-section anim">
       <div class="bench-header">
@@ -3182,18 +3144,18 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
       <div class="bench-highlights">
         <div class="bh-card">
           <div class="bh-eyebrow">Alta Performance</div>
-          <div class="bh-val">277% a 446%<br><span>do CDI</span></div>
-          <div class="bh-note">nos cenários estimados de saída em 3 anos</div>
+          <div class="bh-val" style="font-size:24px">277% a 446% do CDI</div>
+          <div class="bh-note">nos cenários de venda em 3 anos.</div>
         </div>
         <div class="bh-card">
-          <div class="bh-val" style="font-size:32px">159% do CDI</div>
-          <div class="bh-note">mesmo no cenário estimado mais conservador · 7 anos</div>
+          <div class="bh-val" style="font-size:24px">159% do CDI</div>
+          <div class="bh-note">mesmo no cenário conservador de 7 anos.</div>
         </div>
         <div class="bh-card">
-          <div class="bh-val" style="font-size:20px">IPCA + 18 p.p.<br>a IPCA + 60 p.p.</div>
-          <div class="bh-note">faixa de equivalência estimada contra a inflação</div>
+          <div class="bh-val" style="font-size:18px">IPCA + 18,22 p.p. a IPCA + 59,78 p.p.</div>
+          <div class="bh-note">faixa de equivalência anual projetada contra a inflação.</div>
         </div>
-        <div class="bh-disclaimer">Benchmarks: CDI 14,50% a.a. · IPCA 4,89% a.a. · valorização histórica da terra 12,67% a.a. · Estimativas ilustrativas, não constituem garantia de retorno.</div>
+        <div class="bh-disclaimer">Benchmarks utilizados: CDI 14,50% a.a. · IPCA 4,89% a.a. · valorização histórica da terra 12,67% a.a.</div>
       </div>
     </div>
 
@@ -3212,11 +3174,14 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
 
       <div class="faz-icons-row anim">
         <div class="faz-icon" onclick="abrirFazendaHub('aguia')" id="icon-aguia">
-          <div class="faz-icon-shell fi-aguia">
+          <div class="faz-icon-shell fi-aguia faz-shell-logo">
             <div class="faz-icon-badge fib-op">
               <svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.2"><polyline points="2,5.2 4.2,7.4 8,3"/></svg>
             </div>
-            <div class="faz-icon-img" id="faz-img-aguia"><span class="faz-initials">AD</span></div>
+            <div class="faz-icon-img" id="faz-img-aguia">
+              <img src="assets/aguia-dourada.png" alt="Fazenda Águia Dourada" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="faz-initials" style="display:none">AD</span>
+            </div>
             <div class="faz-lock-overlay" id="lock-aguia" style="display:none">
               <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" width="32" height="32"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
@@ -3225,11 +3190,14 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="faz-icon-sub">Monte do Carmo · TO</div>
         </div>
         <div class="faz-icon" onclick="abrirFazendaHub('ceu')" id="icon-ceu">
-          <div class="faz-icon-shell fi-ceu">
+          <div class="faz-icon-shell fi-ceu faz-shell-logo">
             <div class="faz-icon-badge fib-gf">
               <svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2"><circle cx="5" cy="5" r="2.5"/></svg>
             </div>
-            <div class="faz-icon-img" id="faz-img-ceu"><span class="faz-initials">CA</span></div>
+            <div class="faz-icon-img" id="faz-img-ceu">
+              <img src="assets/ceu-azul.png" alt="Fazenda Céu Azul" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="faz-initials" style="display:none">CA</span>
+            </div>
             <div class="faz-lock-overlay" id="lock-ceu" style="display:none">
               <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" width="32" height="32"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
@@ -3704,6 +3672,10 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Documentos
       </button>
+      <button class="admin-tab" onclick="adminTab('conteudo',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Conteúdo
+      </button>
       <button class="admin-tab" onclick="adminTab('logs',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         Log de acessos
@@ -3787,6 +3759,39 @@ body.light-mode .faz-lock-overlay{background:rgba(237,232,216,0.70)!important;ba
           <div class="adg-list" id="adg-ceu"></div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- TAB: CONTEÚDO -->
+    <div class="admin-panel" id="admin-conteudo">
+      <div class="admin-doc-intro" style="margin-bottom:24px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" style="color:var(--gold);flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <div style="font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px">Edite o conteúdo dinâmico do site</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.7">As alterações aqui aparecem em tempo real para todos os acionistas no próximo carregamento de página.</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surf2);border:1px solid var(--line2);border-radius:var(--r-lg);padding:28px;margin-bottom:16px">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Hero · Início</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--text);margin-bottom:24px">Próximo evento previsto</div>
+
+        <div class="mk-field">
+          <label class="mk-label">Título do evento</label>
+          <input class="mk-input" type="text" id="cfg-evt-titulo" placeholder="Ex: Implantação dos 11 pivôs — Fazenda Céu Azul">
+        </div>
+        <div class="mk-field">
+          <label class="mk-label">Data / detalhes</label>
+          <input class="mk-input" type="text" id="cfg-evt-data" placeholder="Ex: Previsão: 2026 · Piauí · sujeito a condições operacionais">
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;align-items:center">
+          <button class="mk-btn-submit" onclick="salvarProximoEvento()" style="background:var(--gold);color:var(--ink)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+            Salvar evento
+          </button>
+          <span style="font-size:11px;color:var(--text3);font-style:italic" id="cfg-evt-status"></span>
+        </div>
       </div>
     </div>
 
@@ -4035,7 +4040,10 @@ async function carregarObrasStatus(){
 
 async function toggleObra(itemId, faseIdx){
   if(!currentUser || currentUser.role !== 'admin') return;
-  const novo = !obrasStatus[itemId];
+  // Pega o estado visual atual (pode vir de obrasStatus OU do default da fase)
+  const el = document.querySelector(`[data-obra-id="${itemId}"]`);
+  const currentlyDone = el ? el.classList.contains('done') : !!obrasStatus[itemId];
+  const novo = !currentlyDone;
   obrasStatus[itemId] = novo;
   // Atualiza UI imediatamente (otimista)
   document.querySelectorAll(`[data-obra-id="${itemId}"]`).forEach(el => el.classList.toggle('done', novo));
@@ -4194,8 +4202,9 @@ function entrarNoApp(u){
   document.getElementById('app').style.display     = 'block';
   applyPermissions(u);
   setUser(u);
-  // Carrega status das obras em background
+  // Carrega status das obras + próximo evento em background
   carregarObrasStatus().catch(()=>{});
+  carregarProximoEvento().catch(()=>{});
   window.scrollTo({top:0});
   setTimeout(observeAnims, 200);
 }
@@ -4327,15 +4336,21 @@ const FAZENDA_DATA = {
     metrics:[
       {label:'Área total',val:'4.001 ha'},
       {label:'Área de plantio',val:'2.820 ha'},
-      {label:'Projeção 5a cons.',val:'R$ 400mi',cls:'gold'},
-      {label:'Retorno anual · 5a',val:'30,05%',cls:'up'}
+      {label:'Altitude',val:'685 m'},
+      {label:'Pivôs centrais',val:'11 unidades'}
     ],
     highlight:null,
     info:[
-      {label:'Irrigação',val:'11 pivôs centrais · 2.820 ha'},
+      {label:'Irrigação',val:'11 pivôs centrais · 2.820 ha (área irrigada total)'},
       {label:'Licença ambiental',val:'PI-LP 00065-0/2026 · emitida'},
       {label:'Clima',val:'22–26 °C · 700–900 mm/ano'},
-      {label:'Coordenadas',val:'9°35\'54" S · 43°59\'19" O · 685 m alt.'}
+      {label:'Coordenadas GPS',val:'9°35\'54" S · 43°59\'19" O'}
+    ],
+    distancias:[
+      {local:'Curimatá · PI',km:'87 km',tipo:'Revendas'},
+      {local:'Bom Jesus · PI',km:'223 km',tipo:'Armazém de grãos'},
+      {local:'Barreiras · BA',km:'440 km',tipo:'Aeroporto'},
+      {local:'Luis Eduardo · BA',km:'461 km',tipo:'Armazém de algodão'}
     ],
     aquifer:{title:'Aquífero Cabeças Gurguéia',desc:'3ª maior reserva de água subterrânea do Brasil. Arenitos 250–300 m de profundidade. Poços jorrantes naturalmente. Garante irrigação perene independente de chuvas.'}
   }
@@ -4346,10 +4361,16 @@ function abrirFazendaHub(faz){
   currentFazendaHub = faz;
   const d = FAZENDA_DATA[faz];
 
-  // Header
+  // Header — usa logo da fazenda quando disponível
   const icon = document.getElementById('hub-icon');
-  icon.className = 'hub-icon ' + d.iconClass;
-  icon.querySelector('span').textContent = d.initials;
+  const logoSrc = faz === 'aguia' ? 'assets/aguia-dourada.png' : (faz === 'ceu' ? 'assets/ceu-azul.png' : null);
+  if(logoSrc){
+    icon.className = 'hub-icon hub-icon-logo';
+    icon.innerHTML = `<img src="${logoSrc}" alt="${d.nome}" onerror="this.parentElement.className='hub-icon ${d.iconClass}';this.parentElement.innerHTML='<span>${d.initials}</span>'">`;
+  } else {
+    icon.className = 'hub-icon ' + d.iconClass;
+    icon.innerHTML = `<span>${d.initials}</span>`;
+  }
   document.getElementById('hub-proj').textContent = d.proj;
   document.getElementById('hub-name').textContent = d.nome;
   document.getElementById('hub-loc').textContent = d.loc;
@@ -4374,24 +4395,28 @@ function abrirFazendaHub(faz){
   }
 
   // Info grid — unified card
-  const ICONS = {
-    'Cultura':'🌱','Pavilhão':'🏗️','Conjunto administrativo':'🏠',
-    'Preparação de solo':'🚜','Poço artesiano':'💧','Infraestrutura elétrica':'⚡',
-    'Licenças':'📋','Distância de Palmas':'📍','Altitude':'⛰️',
-    'Coordenadas GPS':'🗺️','Irrigação':'💦','Licença ambiental':'🛡️',
-    'Clima':'🌤️','Solo':'🪨','Aquífero':'💎'
-  };
   const infoEl = document.getElementById('hub-info-detail');
+  const renderRow = i => `
+    <div class="hi-row">
+      <div class="hi-key">${i.label}</div>
+      <div class="hi-val">${i.val}</div>
+    </div>`;
+  const renderDistancia = dt => `
+    <div class="hi-row hi-row-dist">
+      <div class="hi-key">${dt.local}</div>
+      <div class="hi-val"><span class="hi-dist-km">${dt.km}</span><span class="hi-dist-sep">·</span><span class="hi-dist-tipo">${dt.tipo}</span></div>
+    </div>`;
   infoEl.innerHTML = `
     <div class="hi-card">
-      <div class="hi-card-header">Infraestrutura & Dados Técnicos</div>
-      ${d.info.map(i=>`
-        <div class="hi-row">
-          <div class="hi-ico">${ICONS[i.label]||'📌'}</div>
-          <div class="hi-key">${i.label}</div>
-          <div class="hi-val">${i.val}</div>
-        </div>`).join('')}
-    </div>`;
+      <div class="hi-card-header">Dados Técnicos</div>
+      ${d.info.map(renderRow).join('')}
+    </div>
+    ${d.distancias && d.distancias.length ? `
+      <div class="hi-card" style="margin-top:16px">
+        <div class="hi-card-header">Distâncias Estratégicas</div>
+        ${d.distancias.map(renderDistancia).join('')}
+      </div>
+    ` : ''}`;
 
   // Aquifer
   const aqEl = document.getElementById('hub-aquifer');
@@ -4629,15 +4654,18 @@ function renderHubTimeline(faz){
   const statusColor = {done:'tag-done',active:'tag-active',pending:'tag-pending'};
 
   // Calcula status efetivo de cada fase (auto-conclui quando todos itens marcados)
-  // Para fases hardcoded como 'done', considera todos itens como done automaticamente
+  // Para fases hardcoded como 'done', considera todos itens como done por DEFAULT,
+  // mas o admin pode editar — qualquer entrada explícita em obrasStatus tem prioridade.
+  const itemEstaConcluido = (faz,idx,iIdx,faseStatus) => {
+    const id = faz+'-'+idx+'-'+iIdx;
+    if(obrasStatus[id] !== undefined) return obrasStatus[id];
+    return faseStatus === 'done';
+  };
   const fasesComStatus = fases.map((f,idx) => {
     const totalItens = f.itens.length;
-    const concluidos = f.itens.filter((_,iIdx) => {
-      if(f.status === 'done') return true;
-      return !!obrasStatus['ceu-'+idx+'-'+iIdx];
-    }).length;
-    const effective = (totalItens > 0 && concluidos === totalItens) ? 'done' : f.status;
-    return { ...f, totalItens, concluidos, effective };
+    const concluidos = f.itens.filter((_,iIdx) => itemEstaConcluido('ceu',idx,iIdx,f.status)).length;
+    const effective = (totalItens > 0 && concluidos === totalItens) ? 'done' : (concluidos > 0 ? 'active' : 'pending');
+    return { ...f, totalItens, concluidos, effective, itemEstaConcluido };
   });
   const fasesDone = fasesComStatus.filter(f => f.effective === 'done').length;
   const fasesPercent = Math.round((fasesDone/fasesComStatus.length)*100);
@@ -4678,11 +4706,9 @@ function renderHubTimeline(faz){
             <ul class="fase-ul">
               ${f.itens.map((it,iIdx) => {
                 const itemId = 'ceu-'+idx+'-'+iIdx;
-                const isHardcodedDone = f.status === 'done';
-                const isDone = isHardcodedDone || !!obrasStatus[itemId];
-                const podeClicar = isAdmin && !isHardcodedDone;
+                const isDone = (obrasStatus[itemId] !== undefined) ? obrasStatus[itemId] : (f.status === 'done');
                 return `<li class="fase-li ${isDone?'done':''}" data-obra-id="${itemId}">
-                  <div class="fase-li-check ${podeClicar?'clickable':''}" ${podeClicar?`onclick="event.stopPropagation();toggleObra('${itemId}','${idx}')"`:''}>
+                  <div class="fase-li-check ${isAdmin?'clickable':''}" ${isAdmin?`onclick="event.stopPropagation();toggleObra('${itemId}','${idx}')"`:''}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
                   <span class="fase-li-text">${it}</span>
@@ -5107,6 +5133,65 @@ function adminTab(id, el){
   if(id==='logs')              carregarLogs();
   if(id==='stats')             carregarStats();
   if(id==='documentos-admin')  renderAdminDocs();
+  if(id==='conteudo')          carregarFormProximoEvento();
+}
+
+// ─── CONFIG · PRÓXIMO EVENTO ──────────────────────────────────────────────────
+async function carregarProximoEvento(){
+  try {
+    const { data, error } = await supa
+      .from('config').select('value').eq('key','proximo_evento').maybeSingle();
+    if(error || !data) return;
+    const v = data.value || {};
+    const ne = document.querySelector('.next-event');
+    if(!ne) return;
+    if(v.titulo) ne.querySelector('.ne-title').textContent = v.titulo;
+    if(v.data)   ne.querySelector('.ne-date').textContent  = v.data;
+  } catch(e){ console.warn('proximo_evento:', e.message); }
+}
+
+async function carregarFormProximoEvento(){
+  // Preenche o form de admin com os valores atuais
+  try {
+    const { data } = await supa
+      .from('config').select('value, updated_at').eq('key','proximo_evento').maybeSingle();
+    if(data){
+      const v = data.value || {};
+      document.getElementById('cfg-evt-titulo').value = v.titulo || '';
+      document.getElementById('cfg-evt-data').value   = v.data   || '';
+      const status = document.getElementById('cfg-evt-status');
+      if(status && data.updated_at){
+        const dt = new Date(data.updated_at);
+        status.textContent = 'Última atualização: ' + dt.toLocaleString('pt-BR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      }
+    }
+  } catch(e){ console.warn(e); }
+}
+
+async function salvarProximoEvento(){
+  if(!currentUser || currentUser.role !== 'admin') return;
+  const titulo = document.getElementById('cfg-evt-titulo').value.trim();
+  const dataTxt = document.getElementById('cfg-evt-data').value.trim();
+  if(!titulo){ showToast('Informe o título do evento'); return; }
+  try {
+    const { error } = await supa.from('config').upsert({
+      key:'proximo_evento',
+      value:{ titulo, data:dataTxt },
+      updated_at: new Date().toISOString(),
+      updated_by: currentUser.id
+    });
+    if(error) throw error;
+    showToast('✓ Próximo evento atualizado');
+    // Atualiza visual no hero imediatamente
+    const ne = document.querySelector('.next-event');
+    if(ne){
+      ne.querySelector('.ne-title').textContent = titulo;
+      ne.querySelector('.ne-date').textContent  = dataTxt;
+    }
+    // Atualiza timestamp no form
+    const status = document.getElementById('cfg-evt-status');
+    if(status) status.textContent = 'Última atualização: agora';
+  } catch(e){ showToast('Erro: '+e.message); }
 }
 
 // ─── CARREGAR ACIONISTAS (via Supabase) ──────────────────────────────────────
